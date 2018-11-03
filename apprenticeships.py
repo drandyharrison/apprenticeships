@@ -32,7 +32,9 @@ def get_xlsx_from_url(url):
         try:
             xlsx_data = pd.ExcelFile(socket)
         except xlrd.biffh.XLRDError as e:
-            print("Not an xlsx file")
+            print("Not an xlsx file: {}".format(url))
+            return None
+        print("Succesfully read: {}".format(url))
         print(xlsx_data.sheet_names)
         return xlsx_data
     else:
@@ -44,7 +46,7 @@ def get_xlsx_from_url(url):
 #get_xlsx_from_url('google')
 get_xlsx_from_url('http://google.co.uk')
 #get_xlsx_from_url('https://www.shddf.xx.xx')
-#get_xlsx_from_url(data_url)
+get_xlsx_from_url(data_url)
 ## temporary exit to check code
 quit(0)
 
