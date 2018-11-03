@@ -17,6 +17,11 @@ data_url = "https://assets.publishing.service.gov.uk/government/uploads/system/u
 # returns contents of Excel as a pandas dataframe
 #
 def get_xlsx_from_url(url):
+    """
+    Read an Excel workbook from a url
+    :param url:
+    :return:
+    """
     if validators.url(url):
         # open url
         try:
