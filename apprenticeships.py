@@ -2,12 +2,51 @@
 # the articles uses the DfE statistics at https://www.gov.uk/government/statistics/apprenticeships-in-england-by-industry-characteristics
 # ---------------------------------------------------------------------
 import sys
+import xlrd
 import pandas as pd
 from urllib.request import urlopen
 import matplotlib
+import validators
 
 # url for data, which links to an Excel
 data_url = "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/750709/apprenticeship_starts_tables.xlsx"
+
+# Read an Excel workbook from a given url
+#   url     url pointing to Excel
+#
+# returns contents of Excel as a pandas dataframe
+#
+def get_xlsx_from_url(url):
+    if validators.url(url):
+        # open url
+        try:
+            socket = urlopen(url)
+        except (TimeoutError, urllib.error.URLError) as e:
+            print('Timeout error for {}'.format(url))
+            print("url probably doesn't exist")
+            #print(e)
+        except:
+            print("Unexpected error (when converting string to integer):", sys.exc_info()[0])
+            raise
+        # get Excel workbook
+        try:
+            xlsx_data = pd.ExcelFile(socket)
+        except xlrd.biffh.XLRDError as e:
+            print("Not an xlsx file")
+        print(xlsx_data.sheet_names)
+        return xlsx_data
+    else:
+        print("Invalid url: {}".format(url))
+    #print('Valid url and exists: {}'.format(url))
+
+# test url checking
+# TODO - create unit test based on these
+#get_xlsx_from_url('google')
+get_xlsx_from_url('http://google.co.uk')
+#get_xlsx_from_url('https://www.shddf.xx.xx')
+#get_xlsx_from_url(data_url)
+## temporary exit to check code
+quit(0)
 
 # TODO add exeption handling
 # TODO commit to analytical-adventures repo
