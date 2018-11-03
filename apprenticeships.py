@@ -26,10 +26,9 @@ def get_xlsx_from_url(url):
         # open url
         try:
             socket = urlopen(url)
-        except (TimeoutError, urllib.error.URLError) as e:
+        except TimeoutError as e:
             print('Timeout error for {}'.format(url))
-            print("url probably doesn't exist")
-            #print(e)
+            raise ValueError("url probably doesn't exist")
         except:
             print("Unexpected error (when converting string to integer):", sys.exc_info()[0])
             raise
@@ -37,26 +36,26 @@ def get_xlsx_from_url(url):
         try:
             xlsx_data = pd.ExcelFile(socket)
         except xlrd.biffh.XLRDError as e:
-            print("Not an xlsx file: {}".format(url))
-            return None
-        print("Succesfully read: {}".format(url))
-        print(xlsx_data.sheet_names)
+            raise ValueError("Not an xlsx file: {}".format(url))
         return xlsx_data
     else:
-        print("Invalid url: {}".format(url))
-    #print('Valid url and exists: {}'.format(url))
+        raise ValueError("Invalid url: {}".format(url))
 
-# test url checking
 # TODO - create unit test based on these
-#get_xlsx_from_url('google')
-get_xlsx_from_url('http://google.co.uk')
-#get_xlsx_from_url('https://www.shddf.xx.xx')
-get_xlsx_from_url(data_url)
+url_list = ["google", "http://google.co.uk"] #, "https://www.shddf.xx.xx"]
+url_list.append(data_url)
+for url in url_list:
+    print("Processing: {}".format(url))
+    try:
+        xlsx_data = get_xlsx_from_url(url)
+    except ValueError as e:
+        print("\tFailed")
+    else:
+        print("\tSheet names: {}".format(xlsx_data.sheet_names))
 ## temporary exit to check code
 quit(0)
 
 # TODO add exeption handling
-# TODO commit to analytical-adventures repo
 # create socket for url
 socket = urlopen(data_url)
 # get Excel workbook
