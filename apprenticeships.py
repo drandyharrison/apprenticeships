@@ -43,31 +43,31 @@ def get_xlsx_from_url(url):
     """
     Read an Excel workbook from a url
     :param url: url pointing to an Excel workbook
-    :return:    contents of Excel as a pandas dataframe
+    :return:    flag to indicate whether the url is valid and points to a valid Excel workbook,
+                if True also returns the contents of the Excel workbook as a pandas dataframe; otherwise None
     """
     # is the url valid?
     if check_url(url):
         # open url
         try:
             socket = urlopen(url)
-        except TimeoutError as e:
-            print('Timeout error for {}'.format(url))
-            raise ValueError("url probably doesn't exist")
         except requests.exceptions.ConnectionError as e:
-            print('Connection error for {}'.format(url))
-            raise ValueError("url probably doesn't exist")
+            print("@get_xlsx_from_url() Connection error for {}".format(url))
+            return False, None
         except:
             print("Unexpected error (when converting string to integer):", sys.exc_info()[0])
-            raise
+            return False, None
         # get Excel workbook
         try:
             xlsx_data = pd.ExcelFile(socket)
         except xlrd.biffh.XLRDError as e:
-            raise ValueError("Not an xlsx file: {}".format(url))
-        return xlsx_data
+            print("@get_xlsx_from_url() Not an xlsx file: {}".format(url))
+            return False, None
+        else:
+            return True, xlsx_data
     else:
-        # TODO change to return False not raising an error
-        raise ValueError("URL doesn't exist")
+        print("@get_xlsx_from_url() URL doesn't exist: {}".format(url))
+        return False, None
 
 def get_urls(json_fname_of_urls):
     """
@@ -108,18 +108,19 @@ url_list = get_urls("data_url.json")
 for url in url_list:
     print("Processing: {}".format(url), flush=True)
     try:
-        xlsx_data = get_xlsx_from_url(url)
+        flag, xlsx_data = get_xlsx_from_url(url)
+        if flag:
+            # get the sheet names
+            sht_names = xlsx_data.sheet_names
+            print("\tSheet names: {}".format(sht_names), flush=True)
+        else:
+            print("\tFailed", flush=True)
     except ValueError as e:
         print("\tFailed", flush=True)
-    else:
-        # get the sheet names
-        sht_names = xlsx_data.sheet_names
-        print("\tSheet names: {}".format(sht_names), flush=True)
+
 
 ## temporary exit to check code
 exit(0)
-
-# TODO add exeption handling
 
 # Load worksheet 1A into a data frame
 df = xlsx_data.parse("1A")
