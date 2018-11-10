@@ -69,41 +69,41 @@ def get_xlsx_from_url(url):
         print("@get_xlsx_from_url() URL doesn't exist: {}".format(url))
         return False, None
 
-def get_urls(json_fname_of_urls):
+def get_str_lst_from_json(json_fname):
     """
-    Read a list of urls from a JSON file
-    :param json_fname_of_urls:  name of JSON file to read
-    :return:                    list of urls
+    Read a list of strings from a JSON file
+    :param json_fname:  name of JSON file to read
+    :return:            list of strings in JSON
     """
-    url_list = []
-    # read urls to process from a JSON file
-    json_of_urls = Path(json_fname_of_urls)  # create Path object
+    str_list = []
+    # read strings to process from a JSON file
+    json_of_str = Path(json_fname)  # create Path object
     # does file exist
-    if json_of_urls.exists():
+    if json_of_str.exists():
         # check it's a file
-        if json_of_urls.is_file():
-            with json_of_urls.open() as f:
+        if json_of_str.is_file():
+            with json_of_str.open() as f:
                 try:
                     json_data = json.load(f)
                 except json.decoder.JSONDecodeError as e:
-                    print("json.decoder.JSONDecodeError: reading {} | error: {}".format(json_fname_of_urls, e.msg))
+                    print("json.decoder.JSONDecodeError: reading {} | error: {}".format(json_fname, e.msg))
                     return None
                 except:
-                    print("@check_url() Unexpected error (when converting string to integer):", sys.exc_info()[0])
+                    print("@get_str_lst_from_json() Unexpected error (when converting string to integer):", sys.exc_info()[0])
                     return None
                 else:
-                    for data_url in json_data:
-                        url_list.append(data_url)
-                    return url_list
+                    for data in json_data:
+                        str_list.append(data)
+                    return str_list
         else:
-            print("Isn't a file: {}".format(json_fname_of_urls))
+            print("@get_str_lst_from_json() Isn't a file: {}".format(json_fname))
             return None
     else:
-        print("Doesn't exist: {}".format(json_fname_of_urls))
+        print("@get_str_lst_from_json() Doesn't exist: {}".format(json_fname))
         return None
 
 # get urls to process
-url_list = get_urls("data_url.json")
+url_list = get_str_lst_from_json("data_url.json")
 # process the urls
 for url in url_list:
     print("Processing: {}".format(url), flush=True)
