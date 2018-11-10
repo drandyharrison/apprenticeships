@@ -1,8 +1,7 @@
 # based on FE week article on apprenticeships: https://bit.ly/2SlNP13
 # the articles uses the DfE statistics at https://www.gov.uk/government/statistics/apprenticeships-in-england-by-industry-characteristics
 # ---------------------------------------------------------------------
-import sys
-import os
+from sys import exit
 import xlrd
 import pandas as pd
 from urllib.request import urlopen
@@ -12,12 +11,6 @@ from http.client import OK, FOUND, MOVED_PERMANENTLY
 import requests
 import json
 from pathlib import Path
-
-# TODO read from a JSON file
-# url for data, which links to an Excel
-# JSON file containing the data urls to process
-json_fname_of_urls = 'data_url.json'
-#data_url = "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/750709/apprenticeship_starts_tables.xlsx"
 
 def check_url(url):
     """
@@ -76,32 +69,41 @@ def get_xlsx_from_url(url):
         # TODO change to return False not raising an error
         raise ValueError("URL doesn't exist")
 
-# TODO - create unit test based on these
-url_list = []
-# read urls to process from a JSON file
-json_of_urls = Path(json_fname_of_urls)   # create Path object
-# does file exist
-if json_of_urls.exists():
-    # check it's a file
-    if json_of_urls.is_file():
-        with json_of_urls.open() as f:
-            try:
-                json_data = json.load(f)
-            except json.decoder.JSONDecodeError as e:
-                print("json.decoder.JSONDecodeError: reading {} | error: {}".format(json_fname_of_urls, e.msg))
-                quit(-1)
-            except:
-                print("@check_url() Unexpected error (when converting string to integer):", sys.exc_info()[0])
-                quit(-1)
-            else:
-                for data_url in json_data:
-                    print("data url: {}".format(data_url))
-                    url_list.append(data_url)
+def get_urls(json_fname_of_urls):
+    """
+    Read a list of urls from a JSON file
+    :param json_fname_of_urls:  name of JSON file to read
+    :return:                    list of urls
+    """
+    url_list = []
+    # read urls to process from a JSON file
+    json_of_urls = Path(json_fname_of_urls)  # create Path object
+    # does file exist
+    if json_of_urls.exists():
+        # check it's a file
+        if json_of_urls.is_file():
+            with json_of_urls.open() as f:
+                try:
+                    json_data = json.load(f)
+                except json.decoder.JSONDecodeError as e:
+                    print("json.decoder.JSONDecodeError: reading {} | error: {}".format(json_fname_of_urls, e.msg))
+                    return None
+                except:
+                    print("@check_url() Unexpected error (when converting string to integer):", sys.exc_info()[0])
+                    return None
+                else:
+                    for data_url in json_data:
+                        url_list.append(data_url)
+                    return url_list
+        else:
+            print("Isn't a file: {}".format(json_fname_of_urls))
+            return None
     else:
-        print("Isn't a file: {}".format(json_fname_of_urls))
-else:
-    print("Doesn't exist: {}".format(json_fname_of_urls))
+        print("Doesn't exist: {}".format(json_fname_of_urls))
+        return None
 
+# get urls to process
+url_list = get_urls("data_url.json")
 # process the urls
 for url in url_list:
     print("Processing: {}".format(url), flush=True)
@@ -115,7 +117,7 @@ for url in url_list:
         print("\tSheet names: {}".format(sht_names), flush=True)
 
 ## temporary exit to check code
-quit(0)
+exit(0)
 
 # TODO add exeption handling
 
