@@ -107,17 +107,13 @@ url_list = get_urls("data_url.json")
 # process the urls
 for url in url_list:
     print("Processing: {}".format(url), flush=True)
-    try:
-        flag, xlsx_data = get_xlsx_from_url(url)
-        if flag:
-            # get the sheet names
-            sht_names = xlsx_data.sheet_names
-            print("\tSheet names: {}".format(sht_names), flush=True)
-        else:
-            print("\tFailed", flush=True)
-    except ValueError as e:
+    flag, xlsx_data = get_xlsx_from_url(url)
+    if flag:
+        # get the sheet names
+        sht_names = xlsx_data.sheet_names
+        print("\tSheet names: {}".format(sht_names), flush=True)
+    else:
         print("\tFailed", flush=True)
-
 
 ## temporary exit to check code
 exit(0)
@@ -129,7 +125,6 @@ print("No.  dimensions: {}".format(df.ndim))
 print("Shape:           {}".format(df.shape))
 print("Columns:         {}".format(df.columns))
 # rename the columns to contiguous integers, makes access easier
-# TODO achieve this with a lambda function
 for idx, col in enumerate(df.columns):
     df.rename(columns={col:idx}, inplace=True)
 print("Renamed columns: {}".format(df.columns))
