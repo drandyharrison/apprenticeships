@@ -1,42 +1,14 @@
 # based on FE week article on apprenticeships: https://bit.ly/2SlNP13
 # the articles uses the DfE statistics at https://www.gov.uk/government/statistics/apprenticeships-in-england-by-industry-characteristics
 # ---------------------------------------------------------------------
+import sys
 from sys import exit
 import xlrd
 import pandas as pd
 from urllib.request import urlopen
 import matplotlib
-import validators
-from http.client import OK, FOUND, MOVED_PERMANENTLY
-import requests
 from JSONhandler import JSONhandler
-
-def check_url(url):
-    """
-    Check if a URL exists without downloading the whole file. It only checks the URL header.
-    :param url: the url to be checked
-    :return:    True if url is a valid url string and web site exists/responds
-    """
-    # check it's a valid url string
-    if validators.url(url):
-        good_codes = [OK, FOUND, MOVED_PERMANENTLY]
-        # check url exists
-        try:
-            request = requests.get(url)
-            if request.status_code in good_codes:
-                return True
-            else:
-                print("@check_url() Website returned response code: {code}".format(code=request.status_code))
-                return False
-        except requests.exceptions.ConnectionError as e:
-            print('@check_url() Connection error for {}'.format(url))
-            return False
-        except:
-            print("@check_url() Unexpected error (when converting string to integer):", sys.exc_info()[0])
-            return False
-    else:
-        print("@check_url() Invalid url: {}".format(url))
-        return False
+from URLhandler import URLhandler
 
 def get_xlsx_from_url(url):
     """
@@ -45,8 +17,10 @@ def get_xlsx_from_url(url):
     :return:    flag to indicate whether the url is valid and points to a valid Excel workbook,
                 if True also returns the contents of the Excel workbook as a pandas dataframe; otherwise None
     """
+    urlhndlr = URLhandler(url)
     # is the url valid?
-    if check_url(url):
+    if urlhndlr.check_url():
+        del urlhndlr
         # open url
         try:
             socket = urlopen(url)
@@ -54,7 +28,7 @@ def get_xlsx_from_url(url):
             print("@get_xlsx_from_url() Connection error for {}".format(url))
             return False, None
         except:
-            print("Unexpected error (when converting string to integer):", sys.exc_info()[0])
+            print("@get_xlsx_from_url() Unexpected error:", sys.exc_info()[0])
             return False, None
         # get Excel workbook
         try:
@@ -65,13 +39,15 @@ def get_xlsx_from_url(url):
         else:
             return True, xlsx_data
     else:
+        del urlhndlr
         print("@get_xlsx_from_url() URL doesn't exist: {}".format(url))
         return False, None
 
 # create json handler, ready to replace get_str_lst_from_json
-jhandler = JSONhandler("data_url.json")
+jsonhndlr = JSONhandler("data_url.json")
 # get urls to process
-url_list = jhandler.get_str_lst()
+url_list = jsonhndlr.get_str_lst()
+del jsonhndlr
 # process the urls
 for url in url_list:
     print("Processing: {}".format(url), flush=True)
