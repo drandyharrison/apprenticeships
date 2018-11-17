@@ -12,8 +12,8 @@ class JSONhandler:
             # the name of the JSON file to be processed
             self.json_fname = json_fname
         else:
-            raise ValueError("@JSONhandler creator: {} is not a string".format(fname))
-        
+            raise ValueError("@JSONhandler creator: {} is not a string".format(json_fname))
+
     # method to read a list of strings from a JSON file
     def get_str_lst(self):
         # list of strings to be returned
