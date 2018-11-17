@@ -9,18 +9,15 @@ import matplotlib
 from JSONhandler import JSONhandler
 from XLSXhandler import XLSXhandler
 
-# create json handler, ready to replace get_str_lst_from_json
-jsonhndlr = JSONhandler("data_url.json")
-# get urls to process
-url_list = jsonhndlr.get_str_lst()
+jsonhndlr = JSONhandler("data_url.json")    # create json handler
+url_list = jsonhndlr.get_str_lst()          # get urls to process
 del jsonhndlr
 # process the urls
 for url in url_list:
     print("Processing: {}".format(url), flush=True)
     xlsx = XLSXhandler(url)
     if xlsx.get_xlsx_from_url():
-        # get the sheet names
-        sht_names = xlsx.get_sheet_names()
+        sht_names = xlsx.get_sheet_names()  # get the sheet names
         print("\tSheet names: {}".format(sht_names), flush=True)
     else:
         print("\tFailed", flush=True)
