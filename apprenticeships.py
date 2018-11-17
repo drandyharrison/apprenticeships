@@ -8,7 +8,7 @@ import pandas as pd
 from urllib.request import urlopen
 import matplotlib
 from JSONhandler import JSONhandler
-from URLhandler import URLhandler
+from XLSXhandler import XLSXhandler
 
 def get_xlsx_from_url(url):
     """
@@ -51,13 +51,15 @@ del jsonhndlr
 # process the urls
 for url in url_list:
     print("Processing: {}".format(url), flush=True)
-    flag, xlsx_data = get_xlsx_from_url(url)
+    xlsx = XLSXhandler(url)
+    flag = xlsx.get_xlsx_from_url()
     if flag:
         # get the sheet names
-        sht_names = xlsx_data.sheet_names
+        sht_names = xlsx.xlsx_data.sheet_names
         print("\tSheet names: {}".format(sht_names), flush=True)
     else:
         print("\tFailed", flush=True)
+    del xlsx
 
 ## temporary exit to check code
 exit(0)
