@@ -5,43 +5,9 @@ import sys
 from sys import exit
 import xlrd
 import pandas as pd
-from urllib.request import urlopen
 import matplotlib
 from JSONhandler import JSONhandler
 from XLSXhandler import XLSXhandler
-
-def get_xlsx_from_url(url):
-    """
-    Read an Excel workbook from a url
-    :param url: url pointing to an Excel workbook
-    :return:    flag to indicate whether the url is valid and points to a valid Excel workbook,
-                if True also returns the contents of the Excel workbook as a pandas dataframe; otherwise None
-    """
-    urlhndlr = URLhandler(url)
-    # is the url valid?
-    if urlhndlr.check_url():
-        del urlhndlr
-        # open url
-        try:
-            socket = urlopen(url)
-        except requests.exceptions.ConnectionError as e:
-            print("@get_xlsx_from_url() Connection error for {}".format(url))
-            return False, None
-        except:
-            print("@get_xlsx_from_url() Unexpected error:", sys.exc_info()[0])
-            return False, None
-        # get Excel workbook
-        try:
-            xlsx_data = pd.ExcelFile(socket)
-        except xlrd.biffh.XLRDError as e:
-            print("@get_xlsx_from_url() Not an xlsx file: {}".format(url))
-            return False, None
-        else:
-            return True, xlsx_data
-    else:
-        del urlhndlr
-        print("@get_xlsx_from_url() URL doesn't exist: {}".format(url))
-        return False, None
 
 # create json handler, ready to replace get_str_lst_from_json
 jsonhndlr = JSONhandler("data_url.json")

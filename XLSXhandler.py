@@ -1,4 +1,7 @@
 import sys
+import xlrd
+import pandas as pd
+from urllib.request import urlopen
 import requests
 from URLhandler import URLhandler
 
