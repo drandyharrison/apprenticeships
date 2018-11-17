@@ -5,7 +5,6 @@ import requests
 
 class URLhandler:
     """Class for handling urls"""
-    """A class to handle JSON files"""
 
     # creator methods
     def __init__(self):
@@ -17,6 +16,7 @@ class URLhandler:
             self.url = url
         else:
             raise ValueError("@URLhandler creator: {} is not a string".format(url_name))
+
     # method to check if a URL exists without downloading the whole file. It only checks the URL header.
     def check_url(self):
         # check it's a valid url string
