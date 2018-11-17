@@ -18,8 +18,7 @@ del jsonhndlr
 for url in url_list:
     print("Processing: {}".format(url), flush=True)
     xlsx = XLSXhandler(url)
-    flag = xlsx.get_xlsx_from_url()
-    if flag:
+    if xlsx.get_xlsx_from_url():
         # get the sheet names
         sht_names = xlsx.xlsx_data.sheet_names
         print("\tSheet names: {}".format(sht_names), flush=True)
