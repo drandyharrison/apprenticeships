@@ -52,3 +52,8 @@ class XLSXhandler:
             print("@XLSXhandler.get_xlsx_from_url() URL doesn't exist: {}".format(self.fname))
             self.xlsx_data = None
             return False
+
+    # return the sheetnames
+    def get_sheet_names(self):
+        # TODO check whether the data frame is populated
+        return self.xlsx_data.sheet_names

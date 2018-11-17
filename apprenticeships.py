@@ -20,7 +20,7 @@ for url in url_list:
     xlsx = XLSXhandler(url)
     if xlsx.get_xlsx_from_url():
         # get the sheet names
-        sht_names = xlsx.xlsx_data.sheet_names
+        sht_names = xlsx.get_sheet_names()
         print("\tSheet names: {}".format(sht_names), flush=True)
     else:
         print("\tFailed", flush=True)
