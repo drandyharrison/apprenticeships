@@ -8,9 +8,14 @@ class JSONhandler:
     def __init__(self):
         pass
     def __init__(self, json_fname):
+        # check its a string
         if(isinstance(json_fname, str)):
-            # the name of the JSON file to be processed
-            self.json_fname = json_fname
+            # check whether string is empty or blanh
+            if not(json_fname and json_fname.strip()):
+                raise ValueError("@JSONhandler creator: {} is blank".format(json_fname))
+            else:
+                # the name of the JSON file to be processed
+                self.json_fname = json_fname
         else:
             raise ValueError("@JSONhandler creator: {} is not a string".format(json_fname))
 
