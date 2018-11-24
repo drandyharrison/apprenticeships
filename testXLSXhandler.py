@@ -39,13 +39,13 @@ class testXLSXhandler(unittest.TestCase):
 
     def test_get_xlsx_from_url_exist_not_xlsx(self):
         """Checks that a valid url that's not an Excel returns False when checked"""
-        print("@test_get_xlsx_from_url_exist_url")
+        print("@test_get_xlsx_from_url_exist_not_xlsx")
         xlsx = XLSXhandler("https://www.google.co.uk")
         self.assertFalse(xlsx.get_xlsx_from_url())
 
     def test_get_xlsx_from_url_exist_is_xlsx(self):
         """Checks that a valid url that's an Excel returns True when checked"""
-        print("@test_get_xlsx_from_url_exist_url")
+        print("@test_get_xlsx_from_url_exist_is_xlsx")
         xlsx = XLSXhandler("https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/750709/apprenticeship_starts_tables.xlsx")
         self.assertTrue(xlsx.get_xlsx_from_url())
 
