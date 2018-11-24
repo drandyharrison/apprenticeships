@@ -15,7 +15,7 @@ class URLhandler:
             # the name of the URL to be processed
             self.url = url
         else:
-            raise ValueError("@URLhandler creator: {} is not a string".format(url_name))
+            raise ValueError("@URLhandler creator: {} is not a string".format(url))
 
     # method to check if a URL exists without downloading the whole file. It only checks the URL header.
     def check_url(self):
