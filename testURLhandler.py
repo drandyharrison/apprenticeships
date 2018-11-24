@@ -12,20 +12,24 @@ class testURLhandler(unittest.TestCase):
 
     def test_creator(self):
         """Test that creator throws a ValueError for a non-string url"""
+        print("@test_creator")
         self.assertRaises(ValueError, URLhandler, 25)
 
     def test_invalid_url(self):
         """Checks that a badly url returns False when checked"""
+        print("@test_invalid_url")
         urlhndlr = URLhandler("google")
         self.assertFalse(urlhndlr.check_url())
 
     def test_non_exist_url(self):
         """Checks that a well formed url that doesn't exist returns False when checked"""
+        print("@test_non_exist_url")
         urlhndlr = URLhandler("https://www.shddf.xx.xx")
         self.assertFalse(urlhndlr.check_url())
 
     def test_exist_url(self):
-        """Checks that an valid url returns Trie when checked"""
+        """Checks that a valid url returns True when checked"""
+        print("@test_exist_url")
         urlhndlr = URLhandler("https://www.google.co.uk")
         self.assertTrue(urlhndlr.check_url())
 
