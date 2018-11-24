@@ -10,13 +10,6 @@ class testXLSXhandler(unittest.TestCase):
         """code to tidy up after each test"""
         pass
 
-    def test_example(self):
-        pass
-        # assertEquals
-        # assertTrue - assertFalse
-        # assertRaises
-
-
 # run tests
 if __name__ == '__main__':
     unittest.main(verbosity=2)

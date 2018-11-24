@@ -14,12 +14,6 @@ class testJSONhandler(unittest.TestCase):
         """check that creator throws expected error when passed a non-string"""
         self.assertRaises(ValueError, JSONhandler, 25)
 
-    def test_example(self):
-        pass
-        # self.assertEquals
-        # assertTrue - assertFalse
-        # assertRaises
-
 # run tests
 if __name__ == '__main__':
     unittest.main()
