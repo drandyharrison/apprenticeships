@@ -29,13 +29,6 @@ class testURLhandler(unittest.TestCase):
         urlhndlr = URLhandler("https://www.google.co.uk")
         self.assertTrue(urlhndlr.check_url())
 
-    def test_example(self):
-        pass
-        # assertEquals
-        # assertTrue - assertFalse
-        # assertRaises
-
-
 # run tests
 if __name__ == '__main__':
     unittest.main(verbosity=2)
