@@ -1,28 +1,24 @@
 # based on FE week article on apprenticeships: https://bit.ly/2SlNP13
 # the articles uses the DfE statistics at https://www.gov.uk/government/statistics/apprenticeships-in-england-by-industry-characteristics
 # ---------------------------------------------------------------------
-import sys
 from sys import exit
-import xlrd
 import pandas as pd
 import matplotlib
-from JSONhandler import JSONhandler
 from XLSXhandler import XLSXhandler
 
-jsonhndlr = JSONhandler("data_url.json")    # create json handler
-url_list = jsonhndlr.get_str_lst()          # get urls to process
-del jsonhndlr
-# process the urls
-for url in url_list:
-    print("Processing: {}".format(url), flush=True)
-    xlsx = XLSXhandler(url)
+jsondf = pd.read_json("data_url.json")
+
+for url in jsondf.values:
+    # TODO check url is right size and shape
+    url_str = url.item(0)
+    print("Processing: {}".format(url_str), flush=True)
+    xlsx = XLSXhandler(url_str)
     if xlsx.get_xlsx_from_url():
         sht_names = xlsx.get_sheet_names()  # get the sheet names
         print("\tSheet names: {}".format(sht_names), flush=True)
     else:
         print("\tFailed", flush=True)
     del xlsx
-
 ## temporary exit to check code
 exit(0)
 
