@@ -9,7 +9,9 @@ from XLSXhandler import XLSXhandler
 jsondf = pd.read_json("data_url.json")
 
 for url in jsondf.values:
-    # TODO check url is right size and shape
+    # check url is right size - should be ndarray with one element
+    if url.size != 1:
+        raise ValueError("url wrong size: {}".format(url))
     url_str = url.item(0)
     print("Processing: {}".format(url_str), flush=True)
     xlsx = XLSXhandler(url_str)
