@@ -1,12 +1,12 @@
 # based on FE week article on apprenticeships: https://bit.ly/2SlNP13
 # the articles uses the DfE statistics at https://www.gov.uk/government/statistics/apprenticeships-in-england-by-industry-characteristics
 # ---------------------------------------------------------------------
-from sys import exit
-import pandas as pd
-import matplotlib
+import pandas
+import numpy
+import matplotlib.pyplot as plt
 from XLSXhandler import XLSXhandler
 
-jsondf = pd.read_json("data_url.json")
+jsondf = pandas.read_json("data_url.json")
 
 for url in jsondf.values:
     # check url is right size - should be ndarray with one element
@@ -19,6 +19,12 @@ for url in jsondf.values:
         sht_names = xlsx.get_sheet_names()  # get the sheet names
         print("\tSheet names: {}".format(sht_names), flush=True)
         xlsx.extract_worksheet_data("1A", 3, 4, 7, 28, 5)
+        # Simple plot of totals
+        plt.plot(xlsx.hdr_labels, xlsx.totals, 'ro')
+        plt.xlabel('Years')
+        plt.ylabel('Total')
+        plt.title('Apprenticeships')
+        plt.show()
     else:
         print("\tFailed", flush=True)
     del xlsx
