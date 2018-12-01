@@ -61,7 +61,7 @@ class XLSXhandler:
         """Return the sheet names"""
         return self.xlsx_data.sheet_names
 
-    def get_worksheet(self, worksheet, hdr_row, total_row, start_row, end_row):
+    def get_worksheet(self, worksheet, hdr_row, total_row, start_row, end_row, num_cols):
         """Return the data contents of the worksheet as a ndarray
 
         worksheet -- name of the worksheet to process
@@ -79,50 +79,37 @@ class XLSXhandler:
                     for idx, col in enumerate(self.data.columns):
                         self.data.rename(columns={col: idx}, inplace=True)
                     # check row id parameters: hdr_row, total_row, start_row, end_row
-                    # TODO how to make this neater
-                    if isinstance(hdr_row, int):                                                    # check hdr_row is an integer
-                        if isinstance(total_row, int):                                              # check total_row is an integer
-                            if isinstance(start_row, int):                                          # check start_row is an integer
-                                if isinstance(end_row, int):                                        # check end_row is an integer
-                                    if hdr_row > 0:                                                 # check hdr_row is positive
-                                        if total_row > 0:                                           # check total_row is positive
-                                            if start_row > 0:                                       # check start_row is positive
-                                                if end_row > 0 :                                    # check end_row is positive
-                                                    if start_row <= end_row:                        # check start_row is before end_row
-                                                        if hdr_row != total_row:                    # check hdr_row and total_row are not the same
-                                                            if hdr_row != start_row:                # check hdr_row and start_row are not the same
-                                                                if hdr_row != end_row:              # check hdr_row and end_row are not the same
-                                                                    if total_row != start_row:      # check total_row and start_row are not the same
-                                                                        if total_row != end_row:    # check total_row and end_row are not the same
-                                                                            pass
-                                                                        else:
-                                                                            raise ValueError("@get_worksheet(): total_row {} matches end_row {}".format(total_row, end_row))
-                                                                    else:
-                                                                        raise ValueError("@get_worksheet(): total_row {} matches start_row {}".format(total_row, start_row))
-                                                                else:
-                                                                    raise ValueError("@get_worksheet(): hdr_row {} matches end_row {}".format(hdr_row, end_row))
-                                                            else:
-                                                                raise ValueError("@get_worksheet(): hdr_row {} matches start_row {}".format(hdr_row, start_row))
-                                                        else:
-                                                            raise ValueError("@get_worksheet(): hdr_row {} matches total_row {}".format(hdr_row, total_row))
-                                                    else:
-                                                        raise ValueError("@get_worksheet(): end_row {} is before start_row {}".format(end_row, start_row))
-                                                else:
-                                                    raise ValueError("@get_worksheet(): end_row {} is not positive".format(end_row))
-                                            else:
-                                                raise ValueError("@get_worksheet(): start_row {} is not positive".format(start_row))
-                                        else:
-                                            raise ValueError("@get_worksheet(): total_row {} is not positive".format(total_row))
-                                    else:
-                                        raise ValueError("@get_worksheet(): hdr_row {} is not positive".format(end_row))
-                                else:
-                                    raise ValueError("@get_worksheet(): end_row {} is not integer".format(end_row))
-                            else:
-                                raise ValueError("@get_worksheet(): start_row {} is not integer".format(start_row))
-                        else:
-                            raise ValueError("@get_worksheet(): total_row {} is not integer".format(total_row))
-                    else:
+                    if not isinstance(hdr_row, int):        # check hdr_row is an integer
                         raise ValueError("@get_worksheet(): hdr_row {} is not integer".format(hdr_row))
+                    if not isinstance(total_row, int):  # check total_row is an integer
+                        raise ValueError("@get_worksheet(): total_row {} is not integer".format(total_row))
+                    if not isinstance(start_row, int):  # check start_row is an integer
+                        raise ValueError("@get_worksheet(): start_row {} is not integer".format(start_row))
+                    if not isinstance(end_row, int):    # check end_row is an integer
+                        raise ValueError("@get_worksheet(): end_row {} is not integer".format(end_row))
+                    if hdr_row <= 0:                    # check hdr_row is positive
+                        raise ValueError("@get_worksheet(): hdr_row {} is not positive".format(end_row))
+                    if total_row <= 0:                  # check total_row is positive
+                        raise ValueError("@get_worksheet(): total_row {} is not positive".format(total_row))
+                    if start_row <= 0:                  # check start_row is positive
+                        raise ValueError("@get_worksheet(): start_row {} is not positive".format(start_row))
+                    if end_row <= 0:                    # check end_row is positive
+                        raise ValueError("@get_worksheet(): end_row {} is not positive".format(end_row))
+                    if start_row > end_row:             # check start_row is before end_row
+                        raise ValueError("@get_worksheet(): end_row {} is before start_row {}".format(end_row, start_row))
+                    if hdr_row == total_row:            # check hdr_row and total_row are not the same
+                        raise ValueError("@get_worksheet(): hdr_row {} matches total_row {}".format(hdr_row, total_row))
+                    if hdr_row == start_row:            # check hdr_row and start_row are not the same
+                        raise ValueError("@get_worksheet(): hdr_row {} matches start_row {}".format(hdr_row, start_row))
+                    if hdr_row == end_row:              # check hdr_row and end_row are not the same
+                        raise ValueError("@get_worksheet(): hdr_row {} matches end_row {}".format(hdr_row, end_row))
+                    if total_row == start_row:          # check total_row and start_row are not the same
+                        raise ValueError("@get_worksheet(): total_row {} matches start_row {}".format(total_row, start_row))
+                    if total_row == end_row:            # check total_row and end_row are not the same
+                        raise ValueError("@get_worksheet(): total_row {} matches end_row {}".format(total_row, end_row))
+                    if num_cols <= 0:                   # check num_cols is positive
+                        raise ValueError("@get_worksheet(): num_cols is not positive")
+                    pass
                 else:
                     print("@XLSXhandler.get_worksheet: worksheet {} is not in workbook".format(worksheet))
                     raise ValueError("@XLSXhandler.get_worksheet: worksheet {} is not in workbook".format(worksheet))
