@@ -113,9 +113,11 @@ class XLSXhandler:
                     # get data, labels and totals
                     self.hdr_labels = self.raw_data.loc[hdr_row, 1:num_cols]
                     if total_row > 0:
-                        self.totals = self.raw_data.loc[total_row, 1:num_cols]
+                        self.totals = self.raw_data.loc[total_row, 1:num_cols].values
                     self.row_labels = self.raw_data.loc[start_row:end_row, 0]
-                    self.data = self.raw_data.loc[start_row:end_row, 1:num_cols]
+                    # self.data is a numpy.ndarray
+                    self.data = self.raw_data.loc[start_row:end_row, 1:num_cols].values
+                    # print(type(self.totals))
                 else:
                     print("@XLSXhandler.extract_worksheet_data: worksheet {} is not in workbook".format(worksheet))
                     raise ValueError("@XLSXhandler.extract_worksheet_data: worksheet {} is not in workbook".format(worksheet))
