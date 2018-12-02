@@ -24,13 +24,11 @@ for url in jsondf.values:
         plt.xlabel('Years')
         plt.ylabel('Total')
         plt.title('Apprenticeships')
+        # TODO How to make bigger to accomomdate y-axis label
         plt.show()
+        # TODO plot a histogram of the data
+        # TODO create a function to create a histogram for the analysed data - so will plot any data
+        # TODO process the other worksheets to replicate the FEweek analysis
     else:
         print("\tFailed", flush=True)
     del xlsx
-
-# TODO plot a histogram of the data
-
-# TODO process the other worksheets to replicate the FEweek analysis
-# TODO craate a function for extracting and munging a worksheet
-# TODO create a function to create a histogram for the analysed data
