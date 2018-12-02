@@ -80,22 +80,14 @@ class XLSXhandler:
                     for idx, col in enumerate(self.raw_data.columns):
                         self.raw_data.rename(columns={col: idx}, inplace=True)
                     # check row id parameters: hdr_row, total_row, start_row, end_row
-                    if not isinstance(hdr_row, int):        # check hdr_row is an integer
-                        raise ValueError("@extract_worksheet_data(): hdr_row {} is not integer".format(hdr_row))
-                    if not isinstance(total_row, int):  # check total_row is an integer
-                        raise ValueError("@extract_worksheet_data(): total_row {} is not integer".format(total_row))
-                    if not isinstance(start_row, int):  # check start_row is an integer
-                        raise ValueError("@extract_worksheet_data(): start_row {} is not integer".format(start_row))
-                    if not isinstance(end_row, int):    # check end_row is an integer
-                        raise ValueError("@extract_worksheet_data(): end_row {} is not integer".format(end_row))
-                    if hdr_row <= 0:                    # check hdr_row is positive
-                        raise ValueError("@extract_worksheet_data(): hdr_row {} is not positive".format(end_row))
-                    if total_row <= 0:                  # check total_row is positive
-                        raise ValueError("@extract_worksheet_data(): total_row {} is not positive".format(total_row))
-                    if start_row <= 0:                  # check start_row is positive
-                        raise ValueError("@extract_worksheet_data(): start_row {} is not positive".format(start_row))
-                    if end_row <= 0:                    # check end_row is positive
-                        raise ValueError("@extract_worksheet_data(): end_row {} is not positive".format(end_row))
+                    attr_vals = [hdr_row, total_row, start_row, end_row, num_cols]
+                    attr_names = ["hdr_row", "total_row", "start_row", "end_row", "num_cols"]
+                    # check all the attributes are integer and positive
+                    for idx, val in enumerate(attr_vals):
+                        if not isinstance(attr_vals[idx], int):
+                            raise ValueError("@extract_worksheet_data(): {} {} is not integer".format(attr_names[idx], attr_vals[idx]))
+                        if attr_vals[idx] <= 0:  # check hdr_row is positive
+                            raise ValueError("@extract_worksheet_data(): {} {} is not positive".format(attr_names[idx], attr_vals[idx]))
                     if start_row > end_row:             # check start_row is before end_row
                         raise ValueError("@extract_worksheet_data(): end_row {} is before start_row {}".format(end_row, start_row))
                     if hdr_row == total_row:            # check hdr_row and total_row are not the same
