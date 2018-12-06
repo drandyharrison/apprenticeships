@@ -49,6 +49,7 @@ class testURLhandler(unittest.TestCase):
         # asset
         self.assertTrue(urlhndlr.check_url())
 
+
 # run tests
 if __name__ == '__main__':
     unittest.main(verbosity=2)
