@@ -1,6 +1,7 @@
 import unittest
 from URLhandler import URLhandler
 
+
 class testURLhandler(unittest.TestCase):
     def SetUp(self):
         """set-up code, which is called before each test, to avoid repetition"""

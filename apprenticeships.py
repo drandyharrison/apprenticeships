@@ -1,5 +1,6 @@
 # based on FE week article on apprenticeships: https://bit.ly/2SlNP13
-# the articles uses the DfE statistics at https://www.gov.uk/government/statistics/apprenticeships-in-england-by-industry-characteristics
+# the articles uses the DfE statistics at
+# https://www.gov.uk/government/statistics/apprenticeships-in-england-by-industry-characteristics
 # ---------------------------------------------------------------------
 import pandas
 import matplotlib.pyplot as plt
@@ -23,7 +24,7 @@ for url in jsondf.values:
         plt.bar(xlsx.hdr_labels, xlsx.totals, 1/1.5, color='green')
         plt.xlabel('Years')
         plt.title('Apprenticeships (totals)')
-        # TODO How to make bigger to accomomdate y-axis label
+        # TODO How to make bigger to accommodate y-axis label
         plt.show()
         # TODO create a function to create a histogram for the analysed data - so will plot any data
         # TODO process the other worksheets to replicate the FEweek analysis

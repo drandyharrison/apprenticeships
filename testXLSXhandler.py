@@ -1,6 +1,7 @@
 import unittest
 from XLSXhandler import XLSXhandler
 
+
 class testXLSXhandler(unittest.TestCase):
     def SetUp(self):
         """set-up code, which is called before each test, to avoid repetition"""
@@ -380,7 +381,6 @@ class testXLSXhandler(unittest.TestCase):
         # asset
         self.assertRaises(ValueError, xlsx.extract_worksheet_data, worksheet, hdr_row, total_row, start_row, end_row,
                           num_cols)
-
 
     def test_extract_worksheet_data_num_cols_not_pos(self):
         """Check extract_worksheet_data throws a ValueError if total_row equals end_row"""
