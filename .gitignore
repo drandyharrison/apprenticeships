@@ -12,3 +12,5 @@ __pycache__/
 \.idea/workspace\.xml
 
 \.idea/encodings\.xml
+
+htmlcov/
