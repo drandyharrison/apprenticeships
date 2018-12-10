@@ -334,10 +334,10 @@ class testXLSXhandler(unittest.TestCase):
         # arrange
         url_str = "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/750709/apprenticeship_starts_tables.xlsx"
         worksheet = "1A"
-        hdr_row = 1
+        hdr_row = 3
         total_row = 2
         start_row = 1
-        end_row = 1
+        end_row = 3
         num_cols = 5
         # act
         xlsx = XLSXhandler(url_str)
@@ -345,6 +345,9 @@ class testXLSXhandler(unittest.TestCase):
         # asset
         self.assertRaises(ValueError, xlsx.extract_worksheet_data, worksheet, hdr_row, total_row, start_row, end_row,
                           num_cols)
+
+    def test_extract_worksheet_data_hdr_between_start_and_end_row(self):
+        pass
 
     def test_extract_worksheet_data_total_equals_start_row(self):
         """Check extract_worksheet_data throws a ValueError if total_row equals start_row"""
