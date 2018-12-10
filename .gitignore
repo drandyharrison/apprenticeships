@@ -14,3 +14,5 @@ __pycache__/
 \.idea/encodings\.xml
 
 htmlcov/
+
+\.coverage
