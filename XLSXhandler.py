@@ -99,8 +99,6 @@ class XLSXhandler:
                         raise ValueError("@extract_worksheet_data(): total_row {} matches start_row {}".format(total_row, start_row))
                     if total_row == end_row:            # check total_row and end_row are not the same
                         raise ValueError("@extract_worksheet_data(): total_row {} matches end_row {}".format(total_row, end_row))
-                    if num_cols <= 1:                   # check num_cols is positive
-                        raise ValueError("@extract_worksheet_data(): num_cols is not positive")
                     # get data, labels and totals
                     self.hdr_labels = self.raw_data.loc[hdr_row, 1:num_cols]
                     if total_row > 0:
