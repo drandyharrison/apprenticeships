@@ -95,8 +95,6 @@ class XLSXhandler:
                     # check hdr_row does not lie in the range [start_row, end_row] are not the same
                     if hdr_row >= start_row and hdr_row <= end_row:
                         raise ValueError("@extract_worksheet_data(): hdr_row {} in range [start_row {}, end_row {}]".format(hdr_row, start_row. end_row))
-                    if hdr_row == start_row:            # check hdr_row and start_row are not the same
-                        raise ValueError("@extract_worksheet_data(): hdr_row {} matches start_row {}".format(hdr_row, start_row))
                     if total_row == start_row:          # check total_row and start_row are not the same
                         raise ValueError("@extract_worksheet_data(): total_row {} matches start_row {}".format(total_row, start_row))
                     if total_row == end_row:            # check total_row and end_row are not the same
