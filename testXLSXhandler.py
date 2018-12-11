@@ -274,6 +274,24 @@ class testXLSXhandler(unittest.TestCase):
         self.assertRaises(ValueError, xlsx.extract_worksheet_data, worksheet, hdr_row, total_row, start_row, end_row,
                           num_cols)
 
+    def test_extract_worksheet_data_num_cols_not_pos(self):
+        """Check extract_worksheet_data throws a ValueError if num_cols is not positive"""
+        print("@test_extract_worksheet_data_end_row_not_pos")
+        # arrange
+        url_str = "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/750709/apprenticeship_starts_tables.xlsx"
+        worksheet = "1A"
+        hdr_row = 1
+        total_row = 2
+        start_row = 3
+        end_row = 5
+        num_cols = 0
+        # act
+        xlsx = XLSXhandler(url_str)
+        xlsx.get_xlsx_from_url()
+        # asset
+        self.assertRaises(ValueError, xlsx.extract_worksheet_data, worksheet, hdr_row, total_row, start_row, end_row,
+                          num_cols)
+
     def test_extract_worksheet_data_start_after_end_row(self):
         """Check extract_worksheet_data throws a ValueError if start_row is after end_row"""
         print("@test_extract_worksheet_data_start_after_end_row")
