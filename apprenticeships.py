@@ -6,6 +6,21 @@ import pandas
 import matplotlib.pyplot as plt
 from XLSXhandler import XLSXhandler
 
+def create_barchart(x_data, y_data, width, colour, x_label, title):
+    """Create a bar chart"""
+    # TODO validate parameters
+    # x_data and y_data are lists of the same length
+    # y_data are numeric
+    # colour is a string
+    # x_label is a string
+    # title is a string
+    # create bar chart
+    plt.bar(x_data, y_data, width, color=colour)
+    plt.xlabel(x_label)
+    plt.title(title)
+    plt.show()
+
+
 jsondf = pandas.read_json("data_url.json")
 
 for url in jsondf.values:
@@ -19,14 +34,7 @@ for url in jsondf.values:
         sht_names = xlsx.get_sheet_names()  # get the sheet names
         print("\tSheet names: {}".format(sht_names), flush=True)
         xlsx.extract_worksheet_data("1A", 3, 4, 7, 28, 5)
-        # create bar chart
-        # TODO add hover text for values on bars
-        plt.bar(xlsx.hdr_labels, xlsx.totals, 1/1.5, color='green')
-        plt.xlabel('Years')
-        plt.title('Apprenticeships (totals)')
-        # TODO How to make bigger to accommodate y-axis label
-        plt.show()
-        # TODO create a function to create a histogram for the analysed data - so will plot any data
+        create_barchart(xlsx.hdr_labels, xlsx.totals, 1/1.5,'green', 'Years', 'Apprenticeships (totals)')
         # TODO process the other worksheets to replicate the FEweek analysis
     else:
         print("\tFailed", flush=True)
