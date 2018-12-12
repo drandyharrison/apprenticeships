@@ -1,6 +1,7 @@
 import numpy
 import matplotlib.pyplot as plt
 
+
 def create_barchart(x_data, y_data, width, colour, xlabel, title):
     """Create a bar chart
 
@@ -11,8 +12,6 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title):
     xlabel - label for the x-axis
     title  - title for the bar chart"""
     # validate parameters
-    # TODO do we want to support more generic data types for x_data and y_data?
-    # x_data and y_data are the same length
     if not isinstance(x_data, numpy.ndarray):
         raise ValueError("@create_barchart: x_data {} is not a numpy.ndarray".format(type(x_data)))
     if not isinstance(y_data, numpy.ndarray):
