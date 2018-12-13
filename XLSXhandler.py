@@ -14,7 +14,7 @@ class XLSXhandler:
 
     def __init__(self, fname):
         if (isinstance(fname, str)):
-            # check whether string is empty or blanh
+            # check whether string is empty or blank
             if not(fname and fname.strip()):
                 raise ValueError("@XLSXhandler creator: {} is blank".format(fname))
             else:
