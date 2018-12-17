@@ -26,8 +26,12 @@ class XLSXhandler:
     # Read an Excel workbook from a url and returns whether the url is valid and points to a valid Excel workbook
     # contents of the workbook are loaded into the panda dataframe self.xlsx_data
     def get_xlsx_from_url(self):
-        # TODO try ... except ...
-        urlhndlr = URLhandler(self.fname)
+        try:
+            # create URLhandler
+            urlhndlr = URLhandler(self.fname)
+        except ValueError as e:
+            print("@XLSXhandler: ValueError - {}".format(e))
+            return False
         # is the url valid?
         if urlhndlr.check_url():
             del urlhndlr    # delete as soon as no longer needed
