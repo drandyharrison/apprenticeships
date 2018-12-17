@@ -165,20 +165,6 @@ class testCreateBarchart(unittest.TestCase):
         # asset
         self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title)
 
-    def test_create_barchart_xlabel_empty_str(self):
-        """Check create_barchart throws a ValueError if xlabel is an empty string"""
-        print("@test_create_barchart_xlabel_empty_str")
-        # arrange
-        x_data = numpy.ones(3, dtype=numpy.float64)
-        y_data = numpy.ones(3, dtype=numpy.float64)
-        width = 1/1.5
-        colour = "green"
-        xlabel = ""
-        title = "Bar chart"
-        # act
-        # asset
-        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title)
-
     def test_create_barchart_title_not_str(self):
         """Check create_barchart throws a ValueError if title is not a string"""
         print("@test_create_barchart_title_not_str")
@@ -220,9 +206,6 @@ class testCreateBarchart(unittest.TestCase):
         # act
         # asset
         self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title)
-
-    # TODO check coverage
-
 
 # run tests
 if __name__ == '__main__':
