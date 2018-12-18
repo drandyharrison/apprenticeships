@@ -19,8 +19,10 @@ for url in jsondf.values:
         sht_names = xlsx.get_sheet_names()  # get the sheet names
         print("\tSheet names: {}".format(sht_names), flush=True)
         xlsx.extract_worksheet_data("1A", 3, 4, 7, 28, 5)
-        create_barchart(xlsx.hdr_labels.values, xlsx.totals, 1/1.5,'green', 'Years', 'Apprenticeships (totals)')
+        create_barchart(xlsx.hdr_labels.values, xlsx.totals, 1/1.5,'green', 'Years', 'Apprenticeships (totals)', 1, 131)
         # TODO process the other worksheets to replicate the FEweek analysis
+        # TODO name figure
+        # TODO size  figure
     else:
         print("\tFailed", flush=True)
     del xlsx

@@ -2,7 +2,7 @@ import numpy
 import matplotlib.pyplot as plt
 
 
-def create_barchart(x_data, y_data, width, colour, xlabel, title):
+def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id):
     """Create a bar chart
 
     x_data - the x coordinates of the bars (the categories, don't have to be numeric)
@@ -10,7 +10,9 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title):
     width  - width of the bars
     colour - the colour of the bars
     xlabel - label for the x-axis
-    title  - title for the bar chart"""
+    title  - title for the bar chart
+    fig_id - figure id
+    sub_id - subplot id"""
     # validate parameters
     if not isinstance(x_data, numpy.ndarray):
         raise ValueError("@create_barchart: x_data {} is not a numpy.ndarray".format(type(x_data)))
@@ -32,7 +34,15 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title):
         raise ValueError("@create_barchart: title={} is not a string".format(title))
     if not (title and title.strip()):
         raise ValueError("@create_barchart title is blank or empty")
+    if not isinstance(fig_id, int):
+        raise ValueError("@create_barchart figure id {} is not an integer".format(fig_id))
+    if fig_id <= 0:
+        raise ValueError("@create_barchart figure id {} is not positive".format(fig_id))
+    if not isinstance(sub_id, int):
+        raise ValueError("@create_barchart subplot id {} is not an integer".format(sub_id))
     # create bar chart
+    plt.figure(fig_id)
+    plt.subplot(sub_id)
     plt.bar(x_data, y_data, width, color=colour)
     plt.xlabel(xlabel)
     plt.title(title)
