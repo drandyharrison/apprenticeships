@@ -215,40 +215,6 @@ class testCreateBarchart(unittest.TestCase):
         # asset
         self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
 
-    def test_create_barchart_title_blank_str(self):
-        """Check create_barchart throws a ValueError if title is a blank string"""
-        print("@test_create_barchart_title_blank_str")
-        # arrange
-        x_data = numpy.ones(3, dtype=numpy.float64)
-        y_data = numpy.ones(3, dtype=numpy.float64)
-        width = 1 / 1.5
-        colour = "green"
-        xlabel = "Years"
-        title = "   "
-        fig_id = 1
-        sub_id = 111
-        show = True
-        # act
-        # asset
-        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
-
-    def test_create_barchart_title_empty_str(self):
-        """Check create_barchart throws a ValueError if title is an empty string"""
-        print("@test_create_barchart_title_empty_str")
-        # arrange
-        x_data = numpy.ones(3, dtype=numpy.float64)
-        y_data = numpy.ones(3, dtype=numpy.float64)
-        width = 1 / 1.5
-        colour = "green"
-        xlabel = "Years"
-        title = ""
-        fig_id = 1
-        sub_id = 111
-        show = True
-        # act
-        # asset
-        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
-
     def test_create_barchart_fig_id_not_int(self):
         """Check create_barchart throws a ValueError if fig_id is not integer"""
         print("@test_create_barchart_fig_id_not_int")

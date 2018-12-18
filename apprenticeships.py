@@ -23,11 +23,11 @@ for url in jsondf.values:
         title = 'Apprenticeships (totals)'
         width = 1/1.5
         fig_id = 1
-        plt.figure(fig_id, figsize=(18, 5))
+        plt.figure(fig_id, figsize=(16, 5))
         plt.suptitle(title)
-        create_barchart(xlsx.hdr_labels.values, xlsx.totals/1000, width, 'red', 'Years', title, fig_id, 131, False)
-        create_barchart(xlsx.hdr_labels.values, xlsx.totals/1000, width, 'green', 'Years', title, fig_id, 132, False)
-        create_barchart(xlsx.hdr_labels.values, xlsx.totals/1000, width, 'orange', 'Years', title, fig_id, 133, True)
+        create_barchart(xlsx.hdr_labels.values, xlsx.totals/1000, width, 'red', 'Years', "", fig_id, 131, False)
+        create_barchart(xlsx.hdr_labels.values, xlsx.totals/1000, width, 'green', 'Years', "", fig_id, 132, False)
+        create_barchart(xlsx.hdr_labels.values, xlsx.totals/1000, width, 'orange', 'Years', "  ", fig_id, 133, True)
         # TODO process the other worksheets to replicate the FEweek analysis
         # TODO name figure
         # TODO size  figure
