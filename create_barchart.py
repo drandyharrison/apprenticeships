@@ -33,6 +33,7 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
         raise ValueError("@create_barchart xlabel is blank or empty")
     if not isinstance(title, str):
         raise ValueError("@create_barchart: title={} is not a string".format(title))
+    # TODO empty string for title means don't create title
     if not (title and title.strip()):
         raise ValueError("@create_barchart title is blank or empty")
     if not isinstance(fig_id, int):
@@ -48,6 +49,7 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
     plt.subplot(sub_id)
     plt.bar(x_data, y_data, width, color=colour)
     plt.xlabel(xlabel)
+    plt.ylabel("Number (000s)")
     plt.title(title)
     if show:
         plt.show()
