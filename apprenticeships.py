@@ -27,6 +27,7 @@ for url in jsondf.values:
         plt.suptitle(title)
         fig = plt.gcf()
         fig.canvas.set_window_title('Apprenticeships')     # name the figure
+        # if called with the wrong type of parameters, it will raise a TypeError
         create_barchart(xlsx.hdr_labels.values, xlsx.totals/1000, width, 'red', 'Years', "", fig_id, 131, False)
         create_barchart(xlsx.hdr_labels.values, xlsx.totals/1000, width, 'green', 'Years', "", fig_id, 447, False)
         create_barchart(xlsx.hdr_labels.values, xlsx.totals/1000, width, 'orange', 'Years', "  ", fig_id, 133, True)

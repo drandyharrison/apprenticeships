@@ -277,7 +277,7 @@ class testCreateBarchart(unittest.TestCase):
         xlabel = "Years"
         title = "Bar chart"
         fig_id = 1
-        sub_id = "111"
+        sub_id = 111
         show = 3
         # act
         # asset
@@ -299,9 +299,6 @@ class testCreateBarchart(unittest.TestCase):
         # act
         # asset
         self.assertWarns(UserWarning, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
-
-# TODO what if the wrong number of arguments are passed?
-# TODO check coverage
 
 
 # run tests
