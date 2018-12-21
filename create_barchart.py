@@ -1,5 +1,6 @@
 import numpy
 import matplotlib.pyplot as plt
+import warnings
 
 
 def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show):
@@ -41,14 +42,23 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
         raise ValueError("@create_barchart subplot id {} is not an integer".format(sub_id))
     if not isinstance(show, bool):
         raise ValueError("@create_barchart show {} is not a boolean".format(show))
-    # create bar chart
-    plt.figure(fig_id)
-    plt.subplot(sub_id)
-    plt.bar(x_data, y_data, width, color=colour)
-    plt.xlabel(xlabel)
-    plt.ylabel("Number (000s)")
-    # only give sub-plot a title if title is a non-empty string
-    if title:
-        plt.title(title)
-    if show:
-        plt.show()
+    # check sub-plot id is valid (assumes 3 digit integer)
+    a = int(sub_id/100)
+    b = int(sub_id/10)%10
+    c = sub_id%10
+    num_subplots = a * b
+    # only plot the sub-plot if sub_id is valid
+    if 1 <= c <= num_subplots:
+        # create bar chart
+        plt.figure(fig_id)      # if figure id doesn't already exist, matplotlib.pyplot will create one
+        plt.subplot(sub_id)
+        plt.bar(x_data, y_data, width, color=colour)
+        plt.xlabel(xlabel)
+        plt.ylabel("Number (000s)")
+        # only give sub-plot a title if title is a non-empty string
+        if title:
+            plt.title(title)
+        if show:
+            plt.show()
+    else:
+        warnings.warn("@create_barchart(): invalid subplot reference {}".format(sub_id))

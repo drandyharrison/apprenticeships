@@ -250,8 +250,8 @@ class testCreateBarchart(unittest.TestCase):
         self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
 
     def test_create_barchart_sub_id_not_int(self):
-        """Check create_barchart throws a ValueError if fig_id is not integer"""
-        print("@test_create_barchart_fig_id_not_int")
+        """Check create_barchart throws a ValueError if sub_id is not integer"""
+        print("@test_create_barchart_sub_id_not_int")
         # arrange
         x_data = numpy.ones(3, dtype=numpy.float64)
         y_data = numpy.ones(3, dtype=numpy.float64)
@@ -267,8 +267,8 @@ class testCreateBarchart(unittest.TestCase):
         self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
 
     def test_create_barchart_show_not_bool(self):
-        """Check create_barchart throws a ValueError if fig_id is not integer"""
-        print("@test_create_barchart_fig_id_not_int")
+        """Check create_barchart throws a ValueError if show is not boolean"""
+        print("@test_create_barchart_show_not_bool")
         # arrange
         x_data = numpy.ones(3, dtype=numpy.float64)
         y_data = numpy.ones(3, dtype=numpy.float64)
@@ -283,9 +283,24 @@ class testCreateBarchart(unittest.TestCase):
         # asset
         self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
 
-# TODO what if fig_id refers to a non-existent figure?
-# TODO what if subplot is not consistent with the figure already defined?
-# TODO what if the sub-plot id is invalid; e.g. 227?
+    def test_create_barchart_invalid_subplot_id(self):
+        """Check create_barchart throws a warning if sub_id is not a valid subplot reference"""
+        print("@test_create_barchart_fig_id_not_int")
+        # arrange
+        x_data = numpy.ones(3, dtype=numpy.float64)
+        y_data = numpy.ones(3, dtype=numpy.float64)
+        width = 1 / 1.5
+        colour = "green"
+        xlabel = "Years"
+        title = "Bar chart"
+        fig_id = 1
+        sub_id = 227
+        show = False
+        # act
+        # asset
+        self.assertWarns(UserWarning, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
+
+# TODO what if the sub-plot changes 1x3 then 2x4?
 # TODO what if the wrong number of arguments are passed?
 # TODO check coverage
 
