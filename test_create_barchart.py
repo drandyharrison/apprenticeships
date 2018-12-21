@@ -300,7 +300,6 @@ class testCreateBarchart(unittest.TestCase):
         # asset
         self.assertWarns(UserWarning, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
 
-# TODO what if the sub-plot changes 1x3 then 2x4?
 # TODO what if the wrong number of arguments are passed?
 # TODO check coverage
 

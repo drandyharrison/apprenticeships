@@ -51,7 +51,7 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
     if 1 <= c <= num_subplots:
         # create bar chart
         plt.figure(fig_id)      # if figure id doesn't already exist, matplotlib.pyplot will create one
-        plt.subplot(sub_id)
+        plt.subplot(sub_id)     # if subplot not consistent with figure, new sub-plots added
         plt.bar(x_data, y_data, width, color=colour)
         plt.xlabel(xlabel)
         plt.ylabel("Number (000s)")

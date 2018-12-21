@@ -28,7 +28,7 @@ for url in jsondf.values:
         fig = plt.gcf()
         fig.canvas.set_window_title('Apprenticeships')     # name the figure
         create_barchart(xlsx.hdr_labels.values, xlsx.totals/1000, width, 'red', 'Years', "", fig_id, 131, False)
-        create_barchart(xlsx.hdr_labels.values, xlsx.totals/1000, width, 'green', 'Years', "", fig_id, 132, False)
+        create_barchart(xlsx.hdr_labels.values, xlsx.totals/1000, width, 'green', 'Years', "", fig_id, 447, False)
         create_barchart(xlsx.hdr_labels.values, xlsx.totals/1000, width, 'orange', 'Years', "  ", fig_id, 133, True)
         # TODO process the other worksheets to replicate the FEweek analysis
     else:
