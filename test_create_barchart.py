@@ -24,9 +24,10 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         show = True
+        type = 's'
         # act
         # asset
-        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
+        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type)
 
     def test_create_barchart_y_data_not_ndarray(self):
         """Check create_barchart throws a ValueError if y_data is not a numpy.ndarray"""
@@ -41,9 +42,10 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         show = True
+        type = 's'
         # act
         # asset
-        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
+        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type)
 
     def test_create_barchart_x_data_and_y_data_not_equal_len(self):
         """Check create_barchart throws a ValueError if x_data and y_data are different lengths"""
@@ -58,9 +60,10 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         show = True
+        type = 's'
         # act
         # asset
-        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
+        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type)
 
     def test_create_barchart_colour_not_str(self):
         """Check create_barchart throws a ValueError if colour is not a string"""
@@ -75,9 +78,10 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         show = True
+        type = 's'
         # act
         # asset
-        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
+        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type)
 
     def test_create_barchart_colour_blank_str(self):
         """Check create_barchart throws a ValueError if colour is a blank string"""
@@ -92,9 +96,10 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         show = True
+        type = 's'
         # act
         # asset
-        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
+        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type)
 
     def test_create_barchart_colour_empty_str(self):
         """Check create_barchart throws a ValueError if colour is an empty string"""
@@ -109,9 +114,10 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         show = True
+        type = 's'
         # act
         # asset
-        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
+        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type)
 
     def test_create_barchart_width_is_str(self):
         """Check create_barchart throws a ValueError if test width is string"""
@@ -126,9 +132,10 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         show = True
+        type = 's'
         # act
         # asset
-        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
+        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type)
 
     def test_create_barchart_width_is_int(self):
         """Check create_barchart throws a ValueError if test width is an integer"""
@@ -143,9 +150,10 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         show = True
+        type = 's'
         # act
         # asset
-        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
+        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type)
 
     def test_create_barchart_xlabel_not_str(self):
         """Check create_barchart throws a ValueError if xlabel is not a string"""
@@ -160,9 +168,10 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         show = True
+        type = 's'
         # act
         # asset
-        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
+        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type)
 
     def test_create_barchart_xlabel_blank_str(self):
         """Check create_barchart throws a ValueError if xlabel is a blank string"""
@@ -177,9 +186,10 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         show = True
+        type = 's'
         # act
         # asset
-        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
+        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type)
 
     def test_create_barchart_xlabel_empty_str(self):
         """Check create_barchart throws a ValueError if xlabel is an empty string"""
@@ -194,9 +204,10 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         show = True
+        type = 's'
         # act
         # asset
-        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
+        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type)
 
     def test_create_barchart_title_not_str(self):
         """Check create_barchart throws a ValueError if title is not a string"""
@@ -211,9 +222,10 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         show = True
+        type = 's'
         # act
         # asset
-        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
+        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type)
 
     def test_create_barchart_fig_id_not_int(self):
         """Check create_barchart throws a ValueError if fig_id is not integer"""
@@ -228,9 +240,10 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = "x"
         sub_id = 111
         show = True
+        type = 's'
         # act
         # asset
-        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
+        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type)
 
     def test_create_barchart_fig_id_not_pos(self):
         """Check create_barchart throws a ValueError if fig_id is not positive"""
@@ -245,9 +258,10 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 0
         sub_id = 111
         show = True
+        type = 's'
         # act
         # asset
-        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
+        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type)
 
     def test_create_barchart_sub_id_not_int(self):
         """Check create_barchart throws a ValueError if sub_id is not integer"""
@@ -262,9 +276,10 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = "111"
         show = True
+        type = 's'
         # act
         # asset
-        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
+        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type)
 
     def test_create_barchart_show_not_bool(self):
         """Check create_barchart throws a ValueError if show is not boolean"""
@@ -279,9 +294,10 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         show = 3
+        type = 's'
         # act
         # asset
-        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
+        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type)
 
     def test_create_barchart_invalid_subplot_id(self):
         """Check create_barchart throws a warning if sub_id is not a valid subplot reference"""
@@ -296,9 +312,10 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 227
         show = False
+        type = 's'
         # act
         # asset
-        self.assertWarns(UserWarning, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
+        self.assertWarns(UserWarning, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type)
 
 
 # run tests

@@ -19,8 +19,9 @@ for url in jsondf.values:
     if xlsx.get_xlsx_from_url():
         sht_names = xlsx.get_sheet_names()  # get the sheet names
         print("\tSheet names: {}".format(sht_names), flush=True)
+        # Get apprenticeship starts by sector
         xlsx.extract_worksheet_data("1A", 3, 4, 7, 28, 5)
-        title = 'Apprenticeships (totals)'
+        title = 'Change in apprenticeships starts by sector'
         width = 1/1.5
         fig_id = 1
         plt.figure(fig_id, figsize=(16, 5))     # size the figure
@@ -28,10 +29,19 @@ for url in jsondf.values:
         fig = plt.gcf()
         fig.canvas.set_window_title('Apprenticeships')     # name the figure
         # if called with the wrong type of parameters, it will raise a TypeError
-        create_barchart(xlsx.hdr_labels.values, xlsx.totals/1000, width, 'red', 'Years', "", fig_id, 131, False)
-        create_barchart(xlsx.hdr_labels.values, xlsx.totals/1000, width, 'green', 'Years', "", fig_id, 447, False)
-        create_barchart(xlsx.hdr_labels.values, xlsx.totals/1000, width, 'orange', 'Years', "  ", fig_id, 133, True)
-        # TODO process the other worksheets to replicate the FEweek analysis
+        # TODO Replicate the FEweek analysis
+        # TODO (1) Health and Social work dominate
+        # TODO get data for 2012/13 by sector
+        x_data = xlsx.row_labels.values
+        y_data_1213 = xlsx.data[:,0]
+        y_data_1617 = xlsx.data[:,4]
+        # TODO get data for 2016/17 by sector
+        # create_barchart(x_data, y_data_1213, width, 'red', 'Sectors', "", fig_id, 131, True, 's')
+        create_barchart(x_data, y_data_1213, width, 'red', 'Sectors', "", fig_id, 131, True, 'h')
+        # TODO (2) Fewest people are beginning apprenticeships in the north east
+        # TODO (3) Women choose social work, men choose construction
+        # TODO (4) Large employers make up the majority of starts
+        # TODO (5) Differences by age
     else:
         print("\tFailed", flush=True)
     del xlsx
