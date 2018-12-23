@@ -3,8 +3,7 @@ import matplotlib.pyplot as plt
 import warnings
 
 
-# TODO add default values for the show and type_of_bar, and create unit tests
-def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type_of_bar):
+def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show=True, type_of_bar='s'):
     """Create a bar chart
     x_data      - the x coordinates of the bars (the categories, don't have to be numeric)
     y_data      - the height of the bars
@@ -55,7 +54,6 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
         # create bar chart
         plt.figure(fig_id)      # if figure id doesn't already exist, matplotlib.pyplot will create one
         plt.subplot(sub_id)     # if subplot not consistent with figure, new sub-plots added
-        # TODO make into a case statement
         if type_of_bar == 's':
             plt.bar(x_data, y_data, width, color=colour)
         elif type_of_bar == 'h':
