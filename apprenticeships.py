@@ -37,7 +37,7 @@ for url in jsondf.values:
         y_data_1617 = xlsx.data[:,4]
         # TODO get data for 2016/17 by sector
         # create_barchart(x_data, y_data_1213, width, 'red', 'Sectors', "", fig_id, 131, True, 's')
-        create_barchart(x_data, y_data_1213, width, 'red', 'Sectors', "", fig_id, 131, True, 'h')
+        create_barchart(x_data, y_data_1213, width, ['red'], 'Sectors', "", fig_id, 131, True, 'h')
         # TODO (2) Fewest people are beginning apprenticeships in the north east
         # TODO (3) Women choose social work, men choose construction
         # TODO (4) Large employers make up the majority of starts

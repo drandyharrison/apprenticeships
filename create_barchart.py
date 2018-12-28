@@ -24,10 +24,15 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
         raise ValueError("@create_barchart: x_data [{}] and y_data [{}] are not the same length".format(x_data.size, y_data.size))
     if not isinstance(width, float):
         raise ValueError("@create_barchart: width={} is not a float".format(width))
-    if not isinstance(colour, str):
-        raise ValueError("@create_barchart: colour={} is not a string".format(colour))
-    if not (colour and colour.strip()):
-        raise ValueError("@create_barchart colour is blank or empty")
+    # TODO check each element is a string
+    # TODO check colour is the same 'length' as y_data
+    if not isinstance(colour, list):
+        raise ValueError("@create_barchart: colour={} is not a list".format(colour))
+    for idx, c in enumerate(colour):
+        if not isinstance(c, str):
+            raise ValueError("@create_barchart: {}-th colour={} is not a string".format(idx, c))
+        if not (c and c.strip()):
+            raise ValueError("@create_barchart colour is blank or empty")
     if not isinstance(xlabel, str):
         raise ValueError("@create_barchart: x_label={} is not a string".format(xlabel))
     if not (xlabel and xlabel.strip()):
@@ -54,10 +59,13 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
         # create bar chart
         plt.figure(fig_id)      # if figure id doesn't already exist, matplotlib.pyplot will create one
         plt.subplot(sub_id)     # if subplot not consistent with figure, new sub-plots added
+        # TODO multiple bars - see https://stackoverflow.com/questions/14270391/python-matplotlib-multiple-bars
+        # python doesn't have a switch-case
+        # TODO for each row of data, plot a bar chart
         if type_of_bar == 's':
-            plt.bar(x_data, y_data, width, color=colour)
+            plt.bar(x_data, y_data, width, color=colour[0])
         elif type_of_bar == 'h':
-            plt.barh(x_data, y_data, width, color=colour)
+            plt.barh(x_data, y_data, width, color=colour[0])
         else:
             raise ValueError("@create_barchart unknown type_of_bar {}".format(type_of_bar))
         plt.xlabel(xlabel)

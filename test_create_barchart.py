@@ -18,7 +18,7 @@ class testCreateBarchart(unittest.TestCase):
         x_data = []
         y_data = numpy.array([], dtype=numpy.float64)
         width = 1/1.5
-        colour = "green"
+        colour = ["green"]
         xlabel = "Years"
         title = "Bar chart"
         fig_id = 1
@@ -36,7 +36,7 @@ class testCreateBarchart(unittest.TestCase):
         x_data = numpy.array([], dtype=numpy.float64)
         y_data = []
         width = 1/1.5
-        colour = "green"
+        colour = ["green"]
         xlabel = "Years"
         title = "Bar chart"
         fig_id = 1
@@ -54,7 +54,7 @@ class testCreateBarchart(unittest.TestCase):
         x_data = numpy.ones(3, dtype=numpy.float64)
         y_data = numpy.ones(5, dtype=numpy.float64)
         width = 1/1.5
-        colour = "green"
+        colour = ["green"]
         xlabel = "Years"
         title = "Bar chart"
         fig_id = 1
@@ -65,14 +65,14 @@ class testCreateBarchart(unittest.TestCase):
         # asset
         self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type_of_bar)
 
-    def test_create_barchart_colour_not_str(self):
+    def test_create_barchart_colour_not_list(self):
         """Check create_barchart throws a ValueError if colour is not a string"""
         print("@test_create_barchart_colour_not_str")
         # arrange
         x_data = numpy.ones(3, dtype=numpy.float64)
         y_data = numpy.ones(3, dtype=numpy.float64)
         width = 1/1.5
-        colour = 3
+        colour = 'red'
         xlabel = "Years"
         title = "Bar chart"
         fig_id = 1
@@ -126,7 +126,7 @@ class testCreateBarchart(unittest.TestCase):
         x_data = numpy.ones(3, dtype=numpy.float64)
         y_data = numpy.ones(3, dtype=numpy.float64)
         width = "3"
-        colour = "green"
+        colour = ["green"]
         xlabel = "Years"
         title = "Bar chart"
         fig_id = 1
@@ -144,7 +144,7 @@ class testCreateBarchart(unittest.TestCase):
         x_data = numpy.ones(3, dtype=numpy.float64)
         y_data = numpy.ones(3, dtype=numpy.float64)
         width = 3
-        colour = "green"
+        colour = ["green"]
         xlabel = "Years"
         title = "Bar chart"
         fig_id = 1
@@ -162,7 +162,7 @@ class testCreateBarchart(unittest.TestCase):
         x_data = numpy.ones(3, dtype=numpy.float64)
         y_data = numpy.ones(3, dtype=numpy.float64)
         width = 1/1.5
-        colour = "green"
+        colour = ["green"]
         xlabel = 3
         title = "Bar chart"
         fig_id = 1
@@ -180,7 +180,7 @@ class testCreateBarchart(unittest.TestCase):
         x_data = numpy.ones(3, dtype=numpy.float64)
         y_data = numpy.ones(3, dtype=numpy.float64)
         width = 1/1.5
-        colour = "green"
+        colour = ["green"]
         xlabel = "  "
         title = "Bar chart"
         fig_id = 1
@@ -198,7 +198,7 @@ class testCreateBarchart(unittest.TestCase):
         x_data = numpy.ones(3, dtype=numpy.float64)
         y_data = numpy.ones(3, dtype=numpy.float64)
         width = 1/1.5
-        colour = "green"
+        colour = ["green"]
         xlabel = ""
         title = "Bar chart"
         fig_id = 1
@@ -216,7 +216,7 @@ class testCreateBarchart(unittest.TestCase):
         x_data = numpy.ones(3, dtype=numpy.float64)
         y_data = numpy.ones(3, dtype=numpy.float64)
         width = 1/1.5
-        colour = "green"
+        colour = ["green"]
         xlabel = "Years"
         title = 3
         fig_id = 1
@@ -234,7 +234,7 @@ class testCreateBarchart(unittest.TestCase):
         x_data = numpy.ones(3, dtype=numpy.float64)
         y_data = numpy.ones(3, dtype=numpy.float64)
         width = 1 / 1.5
-        colour = "green"
+        colour = ["green"]
         xlabel = "Years"
         title = "Bar chart"
         fig_id = "x"
@@ -252,7 +252,7 @@ class testCreateBarchart(unittest.TestCase):
         x_data = numpy.ones(3, dtype=numpy.float64)
         y_data = numpy.ones(3, dtype=numpy.float64)
         width = 1 / 1.5
-        colour = "green"
+        colour = ["green"]
         xlabel = "Years"
         title = "Bar chart"
         fig_id = 0
@@ -270,7 +270,7 @@ class testCreateBarchart(unittest.TestCase):
         x_data = numpy.ones(3, dtype=numpy.float64)
         y_data = numpy.ones(3, dtype=numpy.float64)
         width = 1 / 1.5
-        colour = "green"
+        colour = ["green"]
         xlabel = "Years"
         title = "Bar chart"
         fig_id = 1
@@ -288,7 +288,7 @@ class testCreateBarchart(unittest.TestCase):
         x_data = numpy.ones(3, dtype=numpy.float64)
         y_data = numpy.ones(3, dtype=numpy.float64)
         width = 1 / 1.5
-        colour = "green"
+        colour = ["green"]
         xlabel = "Years"
         title = "Bar chart"
         fig_id = 1
@@ -306,7 +306,7 @@ class testCreateBarchart(unittest.TestCase):
         x_data = numpy.ones(3, dtype=numpy.float64)
         y_data = numpy.ones(3, dtype=numpy.float64)
         width = 1 / 1.5
-        colour = "green"
+        colour = ["green"]
         xlabel = "Years"
         title = "Bar chart"
         fig_id = 1
@@ -324,7 +324,7 @@ class testCreateBarchart(unittest.TestCase):
         x_data = numpy.ones(3, dtype=numpy.float64)
         y_data = numpy.ones(3, dtype=numpy.float64)
         width = 1 / 1.5
-        colour = "green"
+        colour = ["green"]
         xlabel = "Years"
         title = "Bar chart"
         fig_id = 1
@@ -342,7 +342,7 @@ class testCreateBarchart(unittest.TestCase):
         x_data = numpy.ones(3, dtype=numpy.float64)
         y_data = numpy.ones(3, dtype=numpy.float64)
         width = 1 / 1.5
-        colour = "green"
+        colour = ["green"]
         xlabel = "Years"
         title = "Bar chart"
         fig_id = 1
