@@ -2,6 +2,7 @@
 # the articles uses the DfE statistics at
 # https://www.gov.uk/government/statistics/apprenticeships-in-england-by-industry-characteristics
 # ---------------------------------------------------------------------
+import numpy
 import pandas
 import matplotlib.pyplot as plt
 from XLSXhandler import XLSXhandler
@@ -33,8 +34,23 @@ for url in jsondf.values:
         # TODO (1) Health and Social work dominate
         # TODO get data for 2012/13 by sector
         x_data = xlsx.row_labels.values
-        y_data_1213 = xlsx.data[:,0]
-        y_data_1617 = xlsx.data[:,4]
+        # create y_data array, with multiple rows
+        # check same shape
+        if numpy.shape(xlsx.data[:, 0]) != numpy.shape(xlsx.data[:, 4]):
+            raise ValueError("@appenticeships: data sets not same shape")
+        num_cols = numpy.size(xlsx.data, 0)
+        y_data = numpy.zeros(shape=(2, num_cols), dtype=numpy.float64)
+        # replace an non-numeric values
+        y_data_1213 = xlsx.data[:, 0]
+        y_data_1617 = xlsx.data[:, 4]
+        for idx, c in enumerate(y_data_1213):
+            if not (isinstance(c, int) or isinstance(c, float)):
+                y_data_1213[idx] = numpy.nan
+        for idx, c in enumerate(y_data_1617):
+            if not (isinstance(c, int) or isinstance(c, float)):
+                y_data_1617[idx] = numpy.nan
+        y_data[0, :] = y_data_1213
+        y_data[1, :] = y_data_1617
         # TODO get data for 2016/17 by sector
         # create_barchart(x_data, y_data_1213, width, 'red', 'Sectors', "", fig_id, 131, True, 's')
         create_barchart(x_data, y_data_1213, width, ['red'], 'Sectors', "", fig_id, 131, True, 'h')

@@ -328,16 +328,17 @@ class testCreateBarchart(unittest.TestCase):
         xlabel = "Years"
         title = "Bar chart"
         fig_id = 1
-        sub_id = 227
+        sub_id = 223
         show = False
         #type_of_bar = 's'
         # act
         # asset
-        self.assertWarns(UserWarning, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
+        # confirm no exceptions (or warnings?) are raised
+        create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
 
     def test_create_barchart_default_show(self):
         """Check create_barchart runs ok using default value for show"""
-        print("@test_create_barchart_default_type_of_bar")
+        print("@test_create_barchart_default_show")
         # arrange
         x_data = numpy.ones(3, dtype=numpy.float64)
         y_data = numpy.ones(3, dtype=numpy.float64)
@@ -346,14 +347,52 @@ class testCreateBarchart(unittest.TestCase):
         xlabel = "Years"
         title = "Bar chart"
         fig_id = 1
-        sub_id = 227
+        sub_id = 223
         #show = False
         type_of_bar = 's'
         # act
         # asset
-        self.assertWarns(UserWarning, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
-                         type_of_bar=type_of_bar)
+        # confirm no exceptions (or warnings?) are raised
+        create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, type_of_bar=type_of_bar)
 
+    def test_create_barchart_not_enough_colours(self):
+        """Check create_barchart fails if there aren't enough colours for the data"""
+        print("@test_create_barchart_not_enough_colours")
+        # arrange
+        x_data = numpy.ones(3, dtype=numpy.float64)
+        y_data = numpy.ones(shape=(2, 3), dtype=numpy.float64)
+        width = 1 / 1.5
+        colour = ["green"]
+        xlabel = "Years"
+        title = "Bar chart"
+        fig_id = 1
+        sub_id = 223
+        show = False
+        type_of_bar = 's'
+        # act
+        # asset
+        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
+                         show=show, type_of_bar=type_of_bar)
+
+    def test_create_barchart_3d_y_data(self):
+        """Check create_barchart fails if ty_data has more than 2 dimensions"""
+        print("@test_create_barchart_3d_y_data")
+        # arrange
+        x_data = numpy.ones(3, dtype=numpy.float64)
+        y_data = numpy.ones(shape=(2, 3, 3), dtype=numpy.float64)
+        width = 1 / 1.5
+        colour = ["green"]
+        xlabel = "Years"
+        title = "Bar chart"
+        fig_id = 1
+        sub_id = 223
+        show = False
+        type_of_bar = 'h'
+        # act
+        # asset
+        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
+                         show=show, type_of_bar=type_of_bar)
+        
 
 # run tests
 if __name__ == '__main__':
