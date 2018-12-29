@@ -11,16 +11,16 @@ class testReplaceNonnumeric(unittest.TestCase):
         """code to tidy up after each test"""
         pass
 
-    def test_replace_nonnumeric_template(self):
+    def test_replace_nonnumeric_data_not_iterable(self):
         """Check replace_nonnumeric throws a ValueError if something happens"""
         print("@test_replace_nonnumeric_template")
         # arrange
-        test_data = []
+        test_data = 2
         nonnumeric_val = numpy.nan
         cast_val = False
         # act
         # asset
-        self.assertRaises(ValueError, replace_nonnumeric, test_data, nonnumeric=nonnumeric_val, cast=cast_val)
+        self.assertRaises(TypeError, replace_nonnumeric, test_data, nonnumeric=nonnumeric_val, cast=cast_val)
 
 
 # run tests
