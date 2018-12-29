@@ -44,6 +44,8 @@ class testReplaceNonnumeric(unittest.TestCase):
         # asset
         self.assertRaises(TypeError, replace_nonnumeric, test_data, nonnumeric=nonnumeric_val, cast=cast_val)
 
+# TODO add tests of cast = True
+
 # run tests
 if __name__ == '__main__':
     unittest.main(verbosity=2)

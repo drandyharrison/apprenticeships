@@ -16,7 +16,6 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
     show        - boolean flag to indicate whether to show figure
     type_of_bar - type of bar chart: 'b' - basic, 'h' - horizontal"""
     # validate parameters
-    # TODO replace ValueError with TypeError where appropriate
     if not isinstance(x_data, numpy.ndarray):
         raise TypeError("@create_barchart: x_data {} is not a numpy.ndarray".format(type(x_data)))
     if not isinstance(y_data, numpy.ndarray):

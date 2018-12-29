@@ -1,7 +1,6 @@
 import numpy
 
 
-# TODO define associated unit tests
 def replace_nonnumeric(data, nonumeric=numpy.nan, cast=False):
     """Given an iterable object, replace any non-numeric objects
     data      - the iterable object to be modified
@@ -16,7 +15,15 @@ def replace_nonnumeric(data, nonumeric=numpy.nan, cast=False):
         raise TypeError("@replace_nonnumeric: nonumeric is not numeric")
     if not isinstance(cast, bool):
         raise TypeError("@replace_nonnumeric: cast is not boolean")
-    # TODO implement the cast flag
+    # replace non-numeric values
     for idx, val in enumerate(data):
         if not (isinstance(val, int) or isinstance(val, float)):
-            data[idx] = nonumeric
+            if cast:
+                if isinstance(val, str):
+                    try:
+                        new_val = float(val)
+                    except ValueError:
+                        new_val = nonumeric
+            else:
+                new_val = nonumeric
+            data[idx] = new_val

@@ -31,9 +31,7 @@ for url in jsondf.values:
         fig = plt.gcf()
         fig.canvas.set_window_title('Apprenticeships')     # name the figure
         # if called with the wrong type of parameters, it will raise a TypeError
-        # TODO Replicate the FEweek analysis
         # TODO (1) Health and Social work dominate
-        # TODO get data for 2012/13 by sector
         x_data = xlsx.row_labels.values
         # create y_data array, with multiple rows
         # check same shape
@@ -48,7 +46,6 @@ for url in jsondf.values:
         replace_nonnumeric(y_data_1617)
         y_data[0, :] = y_data_1213
         y_data[1, :] = y_data_1617
-        # TODO get data for 2016/17 by sector
         # create_barchart(x_data, y_data_1213, width, 'red', 'Sectors', "", fig_id, 131, True, 's')
         create_barchart(x_data, y_data_1213, width, ['red'], 'Sectors', "", fig_id, 131, True, 'h')
         # TODO (2) Fewest people are beginning apprenticeships in the north east

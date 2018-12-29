@@ -108,7 +108,7 @@ class testCreateBarchart(unittest.TestCase):
         x_data = numpy.ones(3, dtype=numpy.float64)
         y_data = numpy.ones(3, dtype=numpy.float64)
         width = 1/1.5
-        colour = [""]
+        colour = ["   "]
         xlabel = "Years"
         title = "Bar chart"
         fig_id = 1
