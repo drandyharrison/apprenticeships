@@ -9,6 +9,10 @@ def replace_nonnumeric(data, nonumeric=numpy.nan, cast=False):
     cast      - attempt to cast non-numeric values; e.g. a string like '123'"""
     # validate inputs
     # TODO check data is iterable
+    try:
+        iterator = iter(data)
+    except TypeError:
+        raise TypeError("@replace_nonnumeric: data are not iterable")
     # TODO check nonnumeric is numeric
     # TODO check cast is boolean
     # TODO implement the cast flag
