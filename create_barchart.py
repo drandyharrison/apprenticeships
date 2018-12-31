@@ -17,6 +17,7 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
     show        - boolean flag to indicate whether to show figure
     type_of_bar - type of bar chart: 'b' - basic, 'h' - horizontal"""
     # validate parameters
+    # TODO is there scope to simplify with asserts or validators?
     if not isinstance(x_data, numpy.ndarray):
         raise TypeError("@create_barchart: x_data {} is not a numpy.ndarray".format(type(x_data)))
     if not isinstance(y_data, numpy.ndarray):
@@ -60,16 +61,32 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
     b = int(sub_id/10)%10
     c = sub_id%10
     num_subplots = a * b
+    # TODO is there scope to refactor?
     # only plot the sub-plot if sub_id is valid
     if 1 <= c <= num_subplots:
         # create bar chart
         fig = plt.figure(fig_id)      # if figure id doesn't already exist, matplotlib.pyplot will create one
         # python doesn't have a switch-case
         if type_of_bar == 's':
-            plt.subplot(sub_id)  # if subplot not consistent with figure, new sub-plots added
-            plt.bar(x_data, y_data, width, color=colour[0])
-            plt.xlabel(xlabel)
-            plt.ylabel("Number (000s)")
+            if y_data.ndim == 1:
+                plt.subplot(sub_id)  # if subplot not consistent with figure, new sub-plots added
+                plt.bar(x_data, y_data, width, color=colour[0])
+                plt.xlabel(xlabel)
+                plt.ylabel("Number (000s)")
+            else:
+                ax = fig.add_subplot(sub_id)
+                num_rows = numpy.size(y_data, 0)
+                x_index = numpy.arange(numpy.size(y_data, 1))
+                width = width / num_rows
+                for row_idx in range(num_rows):
+                    ax.bar(x_index + (row_idx * width), y_data[row_idx, :], width, color=colour[row_idx],
+                            align='center')
+                ax.set_xticks(x_index + ((num_rows / 2) * width))
+                ax.set_xticklabels(x_data)
+                # TODO plot values at the end of each bar (controlled by a flag) -
+                #  see https://stackoverflow.com/questions/14270391/python-matplotlib-multiple-bars
+                plt.xlabel(xlabel)
+                plt.ylabel("Number (000s)")
             # TODO plot multiple data sets on standard barchart
         elif type_of_bar == 'h':
             if y_data.ndim == 1:
@@ -86,7 +103,7 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
                 ax.set_yticklabels(x_data)
                 # TODO plot values at the end of each bar (controlled by a flag) -
                 #  see https://stackoverflow.com/questions/14270391/python-matplotlib-multiple-bars
-                plt.xlabel(xlabel)
+                plt.ylabel(xlabel)
                 plt.xlabel("Number (000s)")
         else:
             raise ValueError("@create_barchart unknown type_of_bar {}".format(type_of_bar))

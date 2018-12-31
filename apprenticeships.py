@@ -26,7 +26,8 @@ for url in jsondf.values:
         title = 'Change in apprenticeships starts by sector'
         width = 0.9
         fig_id = 1
-        plt.figure(fig_id, figsize=(20, 10))     # size the figure
+        # TODO is there scope to shrink the area of the plot and still have sector labels?
+        plt.figure(fig_id, figsize=(24, 10))     # size the figure
         plt.suptitle(title)
         fig = plt.gcf()
         fig.canvas.set_window_title('Apprenticeships')     # name the figure
@@ -47,8 +48,8 @@ for url in jsondf.values:
         replace_nonnumeric(y_data_1617)
         y_data[0, :] = y_data_1213
         y_data[1, :] = y_data_1617
-        # create_barchart(x_data, y_data_1213, width, 'red', 'Sectors', "", fig_id, 131, True, 's')
-        create_barchart(x_data, y_data/1000, width, ['red', 'blue'], 'Sectors', "", fig_id, 221, True, 'h')
+        create_barchart(x_data, y_data/1000, width, ['red', 'blue'], 'Sectors', "", fig_id, 221, True, 's')
+        # create_barchart(x_data, y_data/1000, width, ['red', 'blue'], 'Sectors', "", fig_id, 221, True, 'h')
         # TODO (2) Fewest people are beginning apprenticeships in the north east
         # TODO (3) Women choose social work, men choose construction
         # TODO (4) Large employers make up the majority of starts
