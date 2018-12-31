@@ -19,7 +19,7 @@ class testReplaceNonnumeric(unittest.TestCase):
         nonnumeric_val = numpy.nan
         cast_val = False
         # act
-        # asset
+        # assert
         self.assertRaises(TypeError, replace_nonnumeric, test_data, nonnumeric=nonnumeric_val, cast=cast_val)
 
     def test_replace_nonnumeric_nonnumeric_not_numeric(self):
@@ -30,7 +30,7 @@ class testReplaceNonnumeric(unittest.TestCase):
         nonnumeric_val = "nan"
         cast_val = False
         # act
-        # asset
+        # assert
         self.assertRaises(TypeError, replace_nonnumeric, test_data, nonnumeric=nonnumeric_val, cast=cast_val)
 
     def test_replace_nonnumeric_cast_not_boolean(self):
@@ -41,7 +41,7 @@ class testReplaceNonnumeric(unittest.TestCase):
         nonnumeric_val = numpy.nan
         cast_val = "x"
         # act
-        # asset
+        # assert
         self.assertRaises(TypeError, replace_nonnumeric, test_data, nonnumeric=nonnumeric_val, cast=cast_val)
 
     def test_replace_nonnumeric_cast_false_not_converted(self):
@@ -54,7 +54,7 @@ class testReplaceNonnumeric(unittest.TestCase):
         cast_val = False
         # act
         replace_nonnumeric(test_data, nonnumeric=nonnumeric_val, cast=cast_val)
-        # asset
+        # assert
         self.assertTrue(numpy.isnan(test_data[0]))
 
     def test_replace_nonnumeric_cast_true_converted(self):
@@ -68,11 +68,34 @@ class testReplaceNonnumeric(unittest.TestCase):
         cast_val = True
         # act
         replace_nonnumeric(test_data, nonnumeric=nonnumeric_val, cast=cast_val)
-        # asset
+        # assert
         self.assertTrue(test_data[0], num_val)
 
-# TODO confirm "*" goes to NaN if cast = False
-# TODO confirm "*" goes to NaN if cast = True
+    def test_replace_nonnumeric_cast_false_nan(self):
+        """Check replace_nonnumeric doesn't convert the string '*' when cast is False"""
+        print("@test_replace_nonnumeric_cast_false_nan")
+        # arrange
+        num_str = "*"
+        test_data = [num_str]
+        nonnumeric_val = numpy.nan
+        cast_val = False
+        # act
+        replace_nonnumeric(test_data, nonnumeric=nonnumeric_val, cast=cast_val)
+        # assert
+        self.assertTrue(numpy.isnan(test_data[0]))
+
+    def test_replace_nonnumeric_cast_true_nan(self):
+        """Check replace_nonnumeric doesn't convert the string '*' when cast is True"""
+        print("@test_replace_nonnumeric_cast_true_nan")
+        # arrange
+        num_str = "*"
+        test_data = [num_str]
+        nonnumeric_val = numpy.nan
+        cast_val = True
+        # act
+        replace_nonnumeric(test_data, nonnumeric=nonnumeric_val, cast=cast_val)
+        # assert
+        self.assertTrue(numpy.isnan(test_data[0]))
 
 
 # run tests
