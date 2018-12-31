@@ -22,8 +22,10 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
         raise TypeError("@create_barchart: y_data {} is not a numpy.ndarray".format(type(y_data)))
     if y_data.ndim > 2:
         raise ValueError("@create_barchart: y_data can be at most 2-dimensional")
-    if (y_data.ndim == 1 and x_data.size != y_data.size) or (y_data.ndim == 2 and x_data.size != numpy.size(y_data, 0)):
+    if y_data.ndim == 1 and x_data.size != y_data.size:
         raise ValueError("@create_barchart: x_data [{}] and y_data [{}] are not the same length".format(x_data.size, y_data.size))
+    if y_data.ndim == 2 and x_data.size != numpy.size(y_data, 1):
+        raise ValueError("@create_barchart: x_data [{}] and y_data [{}] are not the same length".format(x_data.size, numpy.size(y_data, 1)))
     if not isinstance(width, float):
         raise TypeError("@create_barchart: width={} is not a float".format(width))
     if not isinstance(colour, list):
@@ -33,7 +35,8 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
             raise TypeError("@create_barchart: {}-th colour={} is not a string".format(idx, c))
         if not (c and c.strip()):
             raise ValueError("@create_barchart: colour is blank or empty")
-    if (y_data.ndim == 1 and numpy.size(colour) < 1) or (y_data.ndim == 2 and numpy.size(colour) < numpy.size(y_data, 0)):
+    if (y_data.ndim == 1 and numpy.size(colour) < 1) or \
+            (y_data.ndim == 2 and numpy.size(colour) < numpy.size(y_data, 0)):
         raise ValueError("@create_barchart: not enough colours")
     if not isinstance(xlabel, str):
         raise TypeError("@create_barchart: x_label={} is not a string".format(xlabel))
@@ -67,7 +70,12 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
         if type_of_bar == 's':
             plt.bar(x_data, y_data, width, color=colour[0])
         elif type_of_bar == 'h':
-            plt.barh(x_data, y_data, width, color=colour[0])
+            if y_data.ndim == 1:
+                plt.barh(x_data, y_data, width, color=colour[0])
+            else:
+                num_rows = numpy.size(y_data, 0)
+                for row_idx in range(num_rows):
+                    plt.barh(x_data, y_data[row_idx, :], width/num_rows, color=colour[row_idx], align='center')
         else:
             raise ValueError("@create_barchart unknown type_of_bar {}".format(type_of_bar))
         plt.xlabel(xlabel)

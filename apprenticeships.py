@@ -42,12 +42,13 @@ for url in jsondf.values:
         # replace an non-numeric values
         y_data_1213 = xlsx.data[:, 0]
         y_data_1617 = xlsx.data[:, 4]
+        # remove non-numeric values before populating the numpy array of floats
         replace_nonnumeric(y_data_1213)
         replace_nonnumeric(y_data_1617)
         y_data[0, :] = y_data_1213
         y_data[1, :] = y_data_1617
         # create_barchart(x_data, y_data_1213, width, 'red', 'Sectors', "", fig_id, 131, True, 's')
-        create_barchart(x_data, y_data_1213, width, ['red'], 'Sectors', "", fig_id, 131, True, 'h')
+        create_barchart(x_data, y_data, width, ['red', 'blue'], 'Sectors', "", fig_id, 131, True, 'h')
         # TODO (2) Fewest people are beginning apprenticeships in the north east
         # TODO (3) Women choose social work, men choose construction
         # TODO (4) Large employers make up the majority of starts

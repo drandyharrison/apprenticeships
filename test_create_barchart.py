@@ -47,12 +47,30 @@ class testCreateBarchart(unittest.TestCase):
         # assert
         self.assertRaises(TypeError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type_of_bar)
 
-    def test_create_barchart_x_data_and_y_data_not_equal_len(self):
-        """Check create_barchart throws a ValueError if x_data and y_data are different lengths"""
-        print("@test_create_barchart_x_data_and_y_data_not_equal_len")
+    def test_create_barchart_x_data_and_y_data_not_equal_len_1d(self):
+        """Check create_barchart throws a ValueError if x_data and y_data are different lengths (when y is 1-d)"""
+        print("@test_create_barchart_x_data_and_y_data_not_equal_len_1d")
         # arrange
         x_data = numpy.ones(3, dtype=numpy.float64)
         y_data = numpy.ones(5, dtype=numpy.float64)
+        width = 1/1.5
+        colour = ["green"]
+        xlabel = "Years"
+        title = "Bar chart"
+        fig_id = 1
+        sub_id = 111
+        show = True
+        type_of_bar = 's'
+        # act
+        # assert
+        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type_of_bar)
+
+    def test_create_barchart_x_data_and_y_data_not_equal_len_2d(self):
+        """Check create_barchart throws a ValueError if x_data and y_data are different lengths (when y is 2-d)"""
+        print("@test_create_barchart_x_data_and_y_data_not_equal_len_2d")
+        # arrange
+        x_data = numpy.ones(3, dtype=numpy.float64)
+        y_data = numpy.ones((3, 5), dtype=numpy.float64)
         width = 1/1.5
         colour = ["green"]
         xlabel = "Years"
