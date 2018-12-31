@@ -81,8 +81,10 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
                 for row_idx in range(num_rows):
                     ax.bar(x_index + (row_idx * width), y_data[row_idx, :], width, color=colour[row_idx],
                             align='center')
-                ax.set_xticks(x_index + ((num_rows / 2) * width))
-                ax.set_xticklabels(x_data)
+                plt.xticks(x_index + ((num_rows / 2) * width), x_data, rotation='vertical')
+                plt.margins(0.2)                     # pad margins, so markers don't get clipped by the axes
+                plt.subplots_adjust(bottom=0.15)    # tweak spacing to prevent clipping of tick labels
+                #ax.set_xticklabels(x_data)
                 # TODO plot values at the end of each bar (controlled by a flag) -
                 #  see https://stackoverflow.com/questions/14270391/python-matplotlib-multiple-bars
                 plt.xlabel(xlabel)
