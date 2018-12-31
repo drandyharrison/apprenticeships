@@ -26,7 +26,7 @@ class testCreateBarchart(unittest.TestCase):
         show = True
         type_of_bar = 's'
         # act
-        # asset
+        # assert
         self.assertRaises(TypeError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type_of_bar)
 
     def test_create_barchart_y_data_not_ndarray(self):
@@ -44,7 +44,7 @@ class testCreateBarchart(unittest.TestCase):
         show = True
         type_of_bar = 's'
         # act
-        # asset
+        # assert
         self.assertRaises(TypeError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type_of_bar)
 
     def test_create_barchart_x_data_and_y_data_not_equal_len(self):
@@ -62,7 +62,7 @@ class testCreateBarchart(unittest.TestCase):
         show = True
         type_of_bar = 's'
         # act
-        # asset
+        # assert
         self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type_of_bar)
 
     def test_create_barchart_colour_not_list(self):
@@ -80,7 +80,7 @@ class testCreateBarchart(unittest.TestCase):
         show = True
         type_of_bar = 's'
         # act
-        # asset
+        # assert
         self.assertRaises(TypeError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type_of_bar)
 
     def test_create_barchart_colour_blank_str(self):
@@ -98,7 +98,7 @@ class testCreateBarchart(unittest.TestCase):
         show = True
         type_of_bar = 's'
         # act
-        # asset
+        # assert
         self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type_of_bar)
 
     def test_create_barchart_colour_empty_str(self):
@@ -116,7 +116,7 @@ class testCreateBarchart(unittest.TestCase):
         show = True
         type_of_bar = 's'
         # act
-        # asset
+        # assert
         self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type_of_bar)
 
     def test_create_barchart_width_is_str(self):
@@ -134,7 +134,7 @@ class testCreateBarchart(unittest.TestCase):
         show = True
         type_of_bar = 's'
         # act
-        # asset
+        # assert
         self.assertRaises(TypeError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type_of_bar)
 
     def test_create_barchart_width_is_int(self):
@@ -152,7 +152,7 @@ class testCreateBarchart(unittest.TestCase):
         show = True
         type_of_bar = 's'
         # act
-        # asset
+        # assert
         self.assertRaises(TypeError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type_of_bar)
 
     def test_create_barchart_xlabel_not_str(self):
@@ -170,7 +170,7 @@ class testCreateBarchart(unittest.TestCase):
         show = True
         type_of_bar = 's'
         # act
-        # asset
+        # assert
         self.assertRaises(TypeError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type_of_bar)
 
     def test_create_barchart_xlabel_blank_str(self):
@@ -188,7 +188,7 @@ class testCreateBarchart(unittest.TestCase):
         show = True
         type_of_bar = 's'
         # act
-        # asset
+        # assert
         self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type_of_bar)
 
     def test_create_barchart_xlabel_empty_str(self):
@@ -206,7 +206,7 @@ class testCreateBarchart(unittest.TestCase):
         show = True
         type_of_bar = 's'
         # act
-        # asset
+        # assert
         self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type_of_bar)
 
     def test_create_barchart_title_not_str(self):
@@ -224,7 +224,7 @@ class testCreateBarchart(unittest.TestCase):
         show = True
         type_of_bar = 's'
         # act
-        # asset
+        # assert
         self.assertRaises(TypeError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type_of_bar)
 
     def test_create_barchart_fig_id_not_int(self):
@@ -242,7 +242,7 @@ class testCreateBarchart(unittest.TestCase):
         show = True
         type_of_bar = 's'
         # act
-        # asset
+        # assert
         self.assertRaises(TypeError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type_of_bar)
 
     def test_create_barchart_fig_id_not_pos(self):
@@ -260,7 +260,7 @@ class testCreateBarchart(unittest.TestCase):
         show = True
         type_of_bar = 's'
         # act
-        # asset
+        # assert
         self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type_of_bar)
 
     def test_create_barchart_sub_id_not_int(self):
@@ -278,7 +278,7 @@ class testCreateBarchart(unittest.TestCase):
         show = True
         type_of_bar = 's'
         # act
-        # asset
+        # assert
         self.assertRaises(TypeError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type_of_bar)
 
     def test_create_barchart_show_not_bool(self):
@@ -296,7 +296,7 @@ class testCreateBarchart(unittest.TestCase):
         show = 3
         type_of_bar = 's'
         # act
-        # asset
+        # assert
         self.assertRaises(TypeError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type_of_bar)
 
     def test_create_barchart_invalid_subplot_id(self):
@@ -314,7 +314,7 @@ class testCreateBarchart(unittest.TestCase):
         show = False
         type_of_bar = 's'
         # act
-        # asset
+        # assert
         self.assertWarns(UserWarning, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show, type_of_bar)
 
     def test_create_barchart_default_type_of_bar(self):
@@ -332,7 +332,7 @@ class testCreateBarchart(unittest.TestCase):
         show = False
         #type_of_bar = 's'
         # act
-        # asset
+        # assert
         # confirm no exceptions (or warnings?) are raised
         create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show)
 
@@ -351,7 +351,7 @@ class testCreateBarchart(unittest.TestCase):
         #show = False
         type_of_bar = 's'
         # act
-        # asset
+        # assert
         # confirm no exceptions (or warnings?) are raised
         create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, type_of_bar=type_of_bar)
 
@@ -370,7 +370,7 @@ class testCreateBarchart(unittest.TestCase):
         show = False
         type_of_bar = 's'
         # act
-        # asset
+        # assert
         self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
                          show=show, type_of_bar=type_of_bar)
 
@@ -389,7 +389,7 @@ class testCreateBarchart(unittest.TestCase):
         show = False
         type_of_bar = 'h'
         # act
-        # asset
+        # assert
         self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
                          show=show, type_of_bar=type_of_bar)
 

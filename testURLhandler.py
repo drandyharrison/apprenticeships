@@ -17,7 +17,7 @@ class testURLhandler(unittest.TestCase):
         # arrange
         url_int = 25
         # act
-        # asset
+        # assert
         self.assertRaises(ValueError, URLhandler, url_int)
 
     def test_invalid_url(self):
@@ -27,7 +27,7 @@ class testURLhandler(unittest.TestCase):
         url_str = "google"
         # act
         urlhndlr = URLhandler(url_str)
-        # asset
+        # assert
         self.assertFalse(urlhndlr.check_url())
 
     def test_non_exist_url(self):
@@ -37,7 +37,7 @@ class testURLhandler(unittest.TestCase):
         url_str = "https://www.shddf.xx.xx"
         # act
         urlhndlr = URLhandler(url_str)
-        # asset
+        # assert
         self.assertFalse(urlhndlr.check_url())
 
     def test_exist_url(self):
@@ -47,7 +47,7 @@ class testURLhandler(unittest.TestCase):
         url_str = "https://www.google.co.uk"
         # act
         urlhndlr = URLhandler(url_str)
-        # asset
+        # assert
         self.assertTrue(urlhndlr.check_url())
 
 

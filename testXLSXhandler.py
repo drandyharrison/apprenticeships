@@ -17,7 +17,7 @@ class testXLSXhandler(unittest.TestCase):
         # arrange
         url_int = 25
         # act
-        # asset
+        # assert
         self.assertRaises(ValueError, XLSXhandler, url_int)
 
     def test_creator_blank(self):
@@ -26,7 +26,7 @@ class testXLSXhandler(unittest.TestCase):
         # arrange
         url_str = "   "
         # act
-        # asset
+        # assert
         self.assertRaises(ValueError, XLSXhandler, url_str)
 
     def test_creator_empty(self):
@@ -35,7 +35,7 @@ class testXLSXhandler(unittest.TestCase):
         # arrange
         url_str = ""
         # act
-        # asset
+        # assert
         self.assertRaises(ValueError, XLSXhandler, url_str)
 
     def test_get_xlsx_from_url_invalid_url(self):
@@ -45,7 +45,7 @@ class testXLSXhandler(unittest.TestCase):
         url_str = "google"
         # act
         xlsx = XLSXhandler(url_str)
-        # asset
+        # assert
         self.assertFalse(xlsx.get_xlsx_from_url())
 
     def test_get_xlsx_from_url_non_exist_url(self):
@@ -55,7 +55,7 @@ class testXLSXhandler(unittest.TestCase):
         url_str = "https://www.shddf.xx.xx"
         # act
         xlsx = XLSXhandler(url_str)
-        # asset
+        # assert
         self.assertFalse(xlsx.get_xlsx_from_url())
 
     def test_get_xlsx_from_url_exist_not_xlsx(self):
@@ -65,7 +65,7 @@ class testXLSXhandler(unittest.TestCase):
         url_str = "https://www.google.co.uk"
         # act
         xlsx = XLSXhandler(url_str)
-        # asset
+        # assert
         self.assertFalse(xlsx.get_xlsx_from_url())
 
     def test_get_xlsx_from_url_exist_is_xlsx(self):
@@ -75,7 +75,7 @@ class testXLSXhandler(unittest.TestCase):
         url_str = "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/750709/apprenticeship_starts_tables.xlsx"
         # act
         xlsx = XLSXhandler(url_str)
-        # asset
+        # assert
         self.assertTrue(xlsx.get_xlsx_from_url())
 
     def test_extract_worksheet_data_not_string(self):
@@ -91,7 +91,7 @@ class testXLSXhandler(unittest.TestCase):
         num_cols = 5
         # act
         xlsx = XLSXhandler(url_str)
-        # asset
+        # assert
         self.assertRaises(ValueError, xlsx.extract_worksheet_data, worksheet, hdr_row, total_row, start_row, end_row,
                           num_cols)
 
@@ -109,7 +109,7 @@ class testXLSXhandler(unittest.TestCase):
         # act
         xlsx = XLSXhandler(url_str)
         xlsx.get_xlsx_from_url()
-        # asset
+        # assert
         self.assertRaises(ValueError, xlsx.extract_worksheet_data, worksheet, hdr_row, total_row, start_row, end_row,
                           num_cols)
 
@@ -126,7 +126,7 @@ class testXLSXhandler(unittest.TestCase):
         num_cols = 5
         # act
         xlsx = XLSXhandler(url_str)
-        # asset
+        # assert
         self.assertRaises(ValueError, xlsx.extract_worksheet_data, worksheet, hdr_row, total_row, start_row, end_row,
                           num_cols)
 
@@ -144,7 +144,7 @@ class testXLSXhandler(unittest.TestCase):
         # act
         xlsx = XLSXhandler(url_str)
         xlsx.get_xlsx_from_url()
-        # asset
+        # assert
         self.assertRaises(ValueError, xlsx.extract_worksheet_data, worksheet, hdr_row, total_row, start_row, end_row,
                           num_cols)
 
@@ -162,7 +162,7 @@ class testXLSXhandler(unittest.TestCase):
         # act
         xlsx = XLSXhandler(url_str)
         xlsx.get_xlsx_from_url()
-        # asset
+        # assert
         self.assertRaises(ValueError, xlsx.extract_worksheet_data, worksheet, hdr_row, total_row, start_row, end_row,
                           num_cols)
 
@@ -180,7 +180,7 @@ class testXLSXhandler(unittest.TestCase):
         # act
         xlsx = XLSXhandler(url_str)
         xlsx.get_xlsx_from_url()
-        # asset
+        # assert
         self.assertRaises(ValueError, xlsx.extract_worksheet_data, worksheet, hdr_row, total_row, start_row, end_row,
                           num_cols)
 
@@ -198,7 +198,7 @@ class testXLSXhandler(unittest.TestCase):
         # act
         xlsx = XLSXhandler(url_str)
         xlsx.get_xlsx_from_url()
-        # asset
+        # assert
         self.assertRaises(ValueError, xlsx.extract_worksheet_data, worksheet, hdr_row, total_row, start_row, end_row,
                           num_cols)
 
@@ -216,7 +216,7 @@ class testXLSXhandler(unittest.TestCase):
         # act
         xlsx = XLSXhandler(url_str)
         xlsx.get_xlsx_from_url()
-        # asset
+        # assert
         self.assertRaises(ValueError, xlsx.extract_worksheet_data, worksheet, hdr_row, total_row, start_row, end_row,
                           num_cols)
 
@@ -234,7 +234,7 @@ class testXLSXhandler(unittest.TestCase):
         # act
         xlsx = XLSXhandler(url_str)
         xlsx.get_xlsx_from_url()
-        # asset
+        # assert
         self.assertRaises(ValueError, xlsx.extract_worksheet_data, worksheet, hdr_row, total_row, start_row, end_row,
                           num_cols)
 
@@ -252,7 +252,7 @@ class testXLSXhandler(unittest.TestCase):
         # act
         xlsx = XLSXhandler(url_str)
         xlsx.get_xlsx_from_url()
-        # asset
+        # assert
         self.assertRaises(ValueError, xlsx.extract_worksheet_data, worksheet, hdr_row, total_row, start_row, end_row,
                           num_cols)
 
@@ -270,7 +270,7 @@ class testXLSXhandler(unittest.TestCase):
         # act
         xlsx = XLSXhandler(url_str)
         xlsx.get_xlsx_from_url()
-        # asset
+        # assert
         self.assertRaises(ValueError, xlsx.extract_worksheet_data, worksheet, hdr_row, total_row, start_row, end_row,
                           num_cols)
 
@@ -288,7 +288,7 @@ class testXLSXhandler(unittest.TestCase):
         # act
         xlsx = XLSXhandler(url_str)
         xlsx.get_xlsx_from_url()
-        # asset
+        # assert
         self.assertRaises(ValueError, xlsx.extract_worksheet_data, worksheet, hdr_row, total_row, start_row, end_row,
                           num_cols)
 
@@ -306,7 +306,7 @@ class testXLSXhandler(unittest.TestCase):
         # act
         xlsx = XLSXhandler(url_str)
         xlsx.get_xlsx_from_url()
-        # asset
+        # assert
         self.assertRaises(ValueError, xlsx.extract_worksheet_data, worksheet, hdr_row, total_row, start_row, end_row,
                           num_cols)
 
@@ -324,7 +324,7 @@ class testXLSXhandler(unittest.TestCase):
         # act
         xlsx = XLSXhandler(url_str)
         xlsx.get_xlsx_from_url()
-        # asset
+        # assert
         self.assertRaises(ValueError, xlsx.extract_worksheet_data, worksheet, hdr_row, total_row, start_row, end_row,
                           num_cols)
 
@@ -342,7 +342,7 @@ class testXLSXhandler(unittest.TestCase):
         # act
         xlsx = XLSXhandler(url_str)
         xlsx.get_xlsx_from_url()
-        # asset
+        # assert
         self.assertRaises(ValueError, xlsx.extract_worksheet_data, worksheet, hdr_row, total_row, start_row, end_row,
                           num_cols)
 
@@ -360,7 +360,7 @@ class testXLSXhandler(unittest.TestCase):
         # act
         xlsx = XLSXhandler(url_str)
         xlsx.get_xlsx_from_url()
-        # asset
+        # assert
         self.assertRaises(ValueError, xlsx.extract_worksheet_data, worksheet, hdr_row, total_row, start_row, end_row,
                           num_cols)
 
@@ -396,7 +396,7 @@ class testXLSXhandler(unittest.TestCase):
         # act
         xlsx = XLSXhandler(url_str)
         xlsx.get_xlsx_from_url()
-        # asset
+        # assert
         self.assertRaises(ValueError, xlsx.extract_worksheet_data, worksheet, hdr_row, total_row, start_row, end_row,
                           num_cols)
 
@@ -414,7 +414,7 @@ class testXLSXhandler(unittest.TestCase):
         # act
         xlsx = XLSXhandler(url_str)
         xlsx.get_xlsx_from_url()
-        # asset
+        # assert
         self.assertRaises(ValueError, xlsx.extract_worksheet_data, worksheet, hdr_row, total_row, start_row, end_row,
                           num_cols)
 
