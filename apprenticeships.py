@@ -34,6 +34,8 @@ for url in jsondf.values:
         # if called with the wrong type of parameters, it will raise a TypeError
         # TODO (1) Health and Social work dominate
         x_data = xlsx.row_labels.values
+        for idx, x_val in enumerate(x_data):
+            x_data[idx] = x_val.strip()             # remove any leading or trailing spaces from labels
         # create y_data array, with multiple rows
         # check same shape
         if numpy.shape(xlsx.data[:, 0]) != numpy.shape(xlsx.data[:, 4]):
