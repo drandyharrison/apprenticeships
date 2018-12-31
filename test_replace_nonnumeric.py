@@ -44,10 +44,23 @@ class testReplaceNonnumeric(unittest.TestCase):
         # asset
         self.assertRaises(TypeError, replace_nonnumeric, test_data, nonnumeric=nonnumeric_val, cast=cast_val)
 
-# TODO confirm "123" is not converted if cast = False
+    def test_replace_nonnumeric_cast_false_not_converted(self):
+        """Check replace_nonnumeric doesn't convert the string '123' when cast is False"""
+        print("@test_replace_nonnumeric_cast_not_boolean")
+        # arrange
+        num_str = "123"
+        test_data = [num_str]
+        nonnumeric_val = numpy.nan
+        cast_val = False
+        # act
+        replace_nonnumeric(test_data, nonnumeric=nonnumeric_val, cast=cast_val)
+        # asset
+        self.assertTrue(numpy.isnan(test_data[0]))
+
 # TODO confirm "123" is converted if cast = True
 # TODO confirm "*" goes to NaN if cast = False
 # TODO confirm "*" goes to NaN if cast = True
+
 
 # run tests
 if __name__ == '__main__':
