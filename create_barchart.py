@@ -1,6 +1,7 @@
 import numpy
 import matplotlib.pyplot as plt
 import warnings
+import math
 
 
 def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show=True, type_of_bar='s'):
@@ -62,24 +63,33 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
     # only plot the sub-plot if sub_id is valid
     if 1 <= c <= num_subplots:
         # create bar chart
-        plt.figure(fig_id)      # if figure id doesn't already exist, matplotlib.pyplot will create one
-        plt.subplot(sub_id)     # if subplot not consistent with figure, new sub-plots added
-        # TODO multiple bars - see https://stackoverflow.com/questions/14270391/python-matplotlib-multiple-bars
+        fig = plt.figure(fig_id)      # if figure id doesn't already exist, matplotlib.pyplot will create one
         # python doesn't have a switch-case
-        # TODO for each row of data, plot a bar chart
         if type_of_bar == 's':
+            plt.subplot(sub_id)  # if subplot not consistent with figure, new sub-plots added
             plt.bar(x_data, y_data, width, color=colour[0])
+            plt.xlabel(xlabel)
+            plt.ylabel("Number (000s)")
+            # TODO plot multiple data sets on standard barchart
         elif type_of_bar == 'h':
             if y_data.ndim == 1:
+                plt.subplot(sub_id)  # if subplot not consistent with figure, new sub-plots added
                 plt.barh(x_data, y_data, width, color=colour[0])
             else:
+                ax = fig.add_subplot(sub_id)
                 num_rows = numpy.size(y_data, 0)
+                x_index = numpy.arange(numpy.size(y_data, 1))
+                width = width/num_rows
                 for row_idx in range(num_rows):
-                    plt.barh(x_data, y_data[row_idx, :], width/num_rows, color=colour[row_idx], align='center')
+                    ax.barh(x_index + (row_idx * width), y_data[row_idx, :], width, color=colour[row_idx], align='center')
+                ax.set_yticks(x_index + ((num_rows/2) * width))
+                ax.set_yticklabels(x_data)
+                # TODO plot values at the end of each bar (controlled by a flag) -
+                #  see https://stackoverflow.com/questions/14270391/python-matplotlib-multiple-bars
+                plt.xlabel(xlabel)
+                plt.xlabel("Number (000s)")
         else:
             raise ValueError("@create_barchart unknown type_of_bar {}".format(type_of_bar))
-        plt.xlabel(xlabel)
-        plt.ylabel("Number (000s)")
         # only give sub-plot a title if title is a non-empty string
         if title:
             plt.title(title)
