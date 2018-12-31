@@ -1,8 +1,6 @@
 import numpy
 import matplotlib.pyplot as plt
 import warnings
-import math
-
 
 def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show=True, type_of_bar='s'):
     """Create a bar chart
@@ -62,6 +60,7 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
     c = sub_id%10
     num_subplots = a * b
     # TODO is there scope to refactor?
+    # TODO replace all hard-coded values with parameters (and default values?)
     # only plot the sub-plot if sub_id is valid
     if 1 <= c <= num_subplots:
         # create bar chart
@@ -78,13 +77,22 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
                 num_rows = numpy.size(y_data, 0)
                 x_index = numpy.arange(numpy.size(y_data, 1))
                 width = width / num_rows
+                rects = []
                 for row_idx in range(num_rows):
-                    ax.bar(x_index + (row_idx * width), y_data[row_idx, :], width, color=colour[row_idx],
-                            align='center')
+                    rects.append(ax.bar(x_index + (row_idx * width), y_data[row_idx, :], width, color=colour[row_idx],
+                            align='center'))
                 plt.xticks(x_index + ((num_rows / 2) * width), x_data, rotation='vertical')
                 plt.margins(0.2)                    # pad margins, so markers don't get clipped by the axes
                 plt.subplots_adjust(bottom=0.15)    # tweak spacing to prevent clipping of tick labels
                 #ax.set_xticklabels(x_data)
+                # create legend
+                leg_colour = []
+                leg_series = ('2012/12', '2016/17')
+                for i in range(num_rows):
+                    leg_colour.append(rects[i][0])
+                # TODO confirm legend colours and series names have the same length
+                ax = fig.gca()
+                ax.legend(leg_colour, leg_series)
                 # TODO plot values at the end of each bar (controlled by a flag) -
                 #  see https://stackoverflow.com/questions/14270391/python-matplotlib-multiple-bars
                 plt.xlabel(xlabel)
