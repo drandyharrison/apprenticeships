@@ -50,7 +50,8 @@ for url in jsondf.values:
         replace_nonnumeric(y_data_1617)
         y_data[0, :] = y_data_1213
         y_data[1, :] = y_data_1617
-        create_barchart(x_data, y_data/1000, width, ['red', 'blue'], 'Sectors', "", fig_id, 221, "Number (000s)", True, 's')
+        create_barchart(x_data, y_data/1000, width, ['red', 'blue'], 'Sectors', "", fig_id, 221, "Number (000s)",
+                        ('2012/12', '2016/17'), True, 's')
         # create_barchart(x_data, y_data/1000, width, ['red', 'blue'], 'Sectors', "", fig_id, 221, True, 'h')
         # TODO (2) Fewest people are beginning apprenticeships in the north east
         # TODO (3) Women choose social work, men choose construction

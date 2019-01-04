@@ -2,7 +2,10 @@ import numpy
 import matplotlib.pyplot as plt
 import warnings
 
-def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, ylabel, show=True, type_of_bar='s'):
+
+# TODO turn positional parameters into keyword parameters - update unit tests and call
+def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, ylabel, series_name, show=True,
+                    type_of_bar='s'):
     """Create a bar chart
     x_data      - the x coordinates of the bars (the categories, don't have to be numeric)
     y_data      - the height of the bars
@@ -13,6 +16,7 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
     fig_id      - figure id
     sub_id      - subplot id
     ylabel      - label for the y-axis
+    series_name - the names of the series to be plotted (mainly used for the legend)
     show        - boolean flag to indicate whether to show figure
     type_of_bar - type of bar chart: 'b' - basic, 'h' - horizontal"""
     # validate parameters
@@ -55,6 +59,13 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
         raise TypeError("@create_barchart: ylabel {} is not a string".format(ylabel))
     if not (ylabel and ylabel.strip()):
         raise ValueError("@create_barchart: ylabel is blank or empty")
+    if not isinstance(series_name, tuple):
+        raise TypeError("@create_barchart: series_name {} is not a tuple".format(series_name))
+    for name in series_name:
+        if not isinstance(name, str):
+            raise TypeError("@create_barchart: series_name element {} is not a string".format(name))
+        if not (name and name.strip()):
+            raise ValueError("@create_barchart: series_name element is blank or empty")
     if not isinstance(show, bool):
         raise TypeError("@create_barchart: show {} is not a boolean".format(show))
     if not isinstance(type_of_bar, str):
@@ -92,13 +103,12 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
                 #ax.set_xticklabels(x_data)
                 # create legend
                 leg_colour = []
-                leg_series = ('2012/12', '2016/17')
                 for i in range(num_rows):
                     leg_colour.append(rects[i][0])
                 # TODO confirm legend colours and series names have the same length
                 # TODO confirm legend works with 1 and 3 data series as well
                 ax = fig.gca()
-                ax.legend(leg_colour, leg_series)
+                ax.legend(leg_colour, series_name)
                 # TODO plot values at the end of each bar (controlled by a flag) -
                 #  see https://stackoverflow.com/questions/14270391/python-matplotlib-multiple-bars
                 plt.xlabel(xlabel)

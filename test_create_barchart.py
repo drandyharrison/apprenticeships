@@ -25,12 +25,13 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
+        series_name = ('2012/12', '2016/17')
         show = True
         type_of_bar = 's'
         # act
         # assert
         self.assertRaises(TypeError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
-                          ylabel, show, type_of_bar)
+                          ylabel, series_name, show, type_of_bar)
 
     def test_create_barchart_y_data_not_ndarray(self):
         """Check create_barchart throws a TypeError if y_data is not a numpy.ndarray"""
@@ -45,12 +46,13 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
+        series_name = ('2012/12', '2016/17')
         show = True
         type_of_bar = 's'
         # act
         # assert
         self.assertRaises(TypeError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
-                          ylabel, show, type_of_bar)
+                          ylabel, series_name, show, type_of_bar)
 
     def test_create_barchart_x_data_and_y_data_not_equal_len_1d(self):
         """Check create_barchart throws a ValueError if x_data and y_data are different lengths (when y is 1-d)"""
@@ -65,12 +67,13 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
+        series_name = ('2012/12', '2016/17')
         show = True
         type_of_bar = 's'
         # act
         # assert
         self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
-                          ylabel, show, type_of_bar)
+                          ylabel, series_name, show, type_of_bar)
 
     def test_create_barchart_x_data_and_y_data_not_equal_len_2d(self):
         """Check create_barchart throws a ValueError if x_data and y_data are different lengths (when y is 2-d)"""
@@ -85,12 +88,13 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
+        series_name = ('2012/12', '2016/17')
         show = True
         type_of_bar = 's'
         # act
         # assert
         self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
-                          ylabel, show, type_of_bar)
+                          ylabel, series_name, show, type_of_bar)
 
     def test_create_barchart_colour_not_list(self):
         """Check create_barchart throws a TypeError if colour is not a string"""
@@ -105,12 +109,13 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
+        series_name = ('2012/12', '2016/17')
         show = True
         type_of_bar = 's'
         # act
         # assert
         self.assertRaises(TypeError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
-                          ylabel, show, type_of_bar)
+                          ylabel, series_name, show, type_of_bar)
 
     def test_create_barchart_colour_blank_str(self):
         """Check create_barchart throws a ValueError if colour is a blank string"""
@@ -125,12 +130,13 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
+        series_name = ('2012/12', '2016/17')
         show = True
         type_of_bar = 's'
         # act
         # assert
         self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
-                          ylabel, show, type_of_bar)
+                          ylabel, series_name, show, type_of_bar)
 
     def test_create_barchart_colour_empty_str(self):
         """Check create_barchart throws a ValueError if colour is an empty string"""
@@ -145,12 +151,13 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
+        series_name = ('2012/12', '2016/17')
         show = True
         type_of_bar = 's'
         # act
         # assert
         self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
-                          ylabel, show, type_of_bar)
+                          ylabel, series_name, show, type_of_bar)
 
     def test_create_barchart_width_is_str(self):
         """Check create_barchart throws a TypeError if test width is string"""
@@ -165,12 +172,13 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
+        series_name = ('2012/12', '2016/17')
         show = True
         type_of_bar = 's'
         # act
         # assert
         self.assertRaises(TypeError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
-                          ylabel, show, type_of_bar)
+                          ylabel, series_name, show, type_of_bar)
 
     def test_create_barchart_width_is_int(self):
         """Check create_barchart throws a TypeError if test width is an integer"""
@@ -185,12 +193,13 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
+        series_name = ('2012/12', '2016/17')
         show = True
         type_of_bar = 's'
         # act
         # assert
         self.assertRaises(TypeError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
-                          ylabel, show, type_of_bar)
+                          ylabel, series_name, show, type_of_bar)
 
     def test_create_barchart_xlabel_not_str(self):
         """Check create_barchart throws a TypeError if xlabel is not a string"""
@@ -205,12 +214,13 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
+        series_name = ('2012/12', '2016/17')
         show = True
         type_of_bar = 's'
         # act
         # assert
         self.assertRaises(TypeError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
-                          ylabel, show, type_of_bar)
+                          ylabel, series_name, show, type_of_bar)
 
     def test_create_barchart_xlabel_blank_str(self):
         """Check create_barchart throws a ValueError if xlabel is a blank string"""
@@ -225,12 +235,13 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
+        series_name = ('2012/12', '2016/17')
         show = True
         type_of_bar = 's'
         # act
         # assert
         self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
-                          ylabel, show, type_of_bar)
+                          ylabel, series_name, show, type_of_bar)
 
     def test_create_barchart_xlabel_empty_str(self):
         """Check create_barchart throws a ValueError if xlabel is an empty string"""
@@ -245,12 +256,13 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
+        series_name = ('2012/12', '2016/17')
         show = True
         type_of_bar = 's'
         # act
         # assert
         self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
-                          ylabel, show, type_of_bar)
+                          ylabel, series_name, show, type_of_bar)
 
     def test_create_barchart_title_not_str(self):
         """Check create_barchart throws a TypeError if title is not a string"""
@@ -265,12 +277,13 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
+        series_name = ('2012/12', '2016/17')
         show = True
         type_of_bar = 's'
         # act
         # assert
         self.assertRaises(TypeError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
-                          ylabel, show, type_of_bar)
+                          ylabel, series_name, show, type_of_bar)
 
     def test_create_barchart_fig_id_not_int(self):
         """Check create_barchart throws a TypeError if fig_id is not integer"""
@@ -285,12 +298,13 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = "x"
         sub_id = 111
         ylabel = "Number (000s)"
+        series_name = ('2012/12', '2016/17')
         show = True
         type_of_bar = 's'
         # act
         # assert
         self.assertRaises(TypeError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
-                          ylabel, show, type_of_bar)
+                          ylabel, series_name, show, type_of_bar)
 
     def test_create_barchart_fig_id_not_pos(self):
         """Check create_barchart throws a ValueError if fig_id is not positive"""
@@ -305,12 +319,13 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 0
         sub_id = 111
         ylabel = "Number (000s)"
+        series_name = ('2012/12', '2016/17')
         show = True
         type_of_bar = 's'
         # act
         # assert
         self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
-                          ylabel, show, type_of_bar)
+                          ylabel, series_name, show, type_of_bar)
 
     def test_create_barchart_sub_id_not_int(self):
         """Check create_barchart throws a TypeError if sub_id is not integer"""
@@ -325,12 +340,13 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = "111"
         ylabel = "Number (000s)"
+        series_name = ('2012/12', '2016/17')
         show = True
         type_of_bar = 's'
         # act
         # assert
         self.assertRaises(TypeError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
-                          ylabel, show, type_of_bar)
+                          ylabel, series_name, show, type_of_bar)
 
     def test_create_barchart_show_not_bool(self):
         """Check create_barchart throws a TypeError if show is not boolean"""
@@ -345,12 +361,13 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
+        series_name = ('2012/12', '2016/17')
         show = 3
         type_of_bar = 's'
         # act
         # assert
         self.assertRaises(TypeError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
-                          ylabel, show, type_of_bar)
+                          ylabel, series_name, show, type_of_bar)
 
     def test_create_barchart_invalid_subplot_id(self):
         """Check create_barchart throws a warning if sub_id is not a valid subplot reference"""
@@ -365,12 +382,13 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 227
         ylabel = "Number (000s)"
+        series_name = ('2012/12', '2016/17')
         show = False
         type_of_bar = 's'
         # act
         # assert
         self.assertWarns(UserWarning, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
-                         ylabel, show, type_of_bar)
+                         ylabel, series_name, show, type_of_bar)
 
     def test_create_barchart_default_type_of_bar(self):
         """Check create_barchart runs ok using default value for type_of_bar"""
@@ -385,12 +403,13 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 223
         ylabel = "Number (000s)"
+        series_name = ('2012/12', '2016/17')
         show = False
         #type_of_bar = 's'
         # act
         # assert
         # confirm no exceptions (or warnings?) are raised
-        create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, ylabel, show)
+        create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, ylabel, series_name, show)
 
     def test_create_barchart_default_show(self):
         """Check create_barchart runs ok using default value for show"""
@@ -405,12 +424,13 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 223
         ylabel = "Number (000s)"
+        series_name = ('2012/12', '2016/17')
         #show = False
         type_of_bar = 's'
         # act
         # assert
         # confirm no exceptions (or warnings?) are raised
-        create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, ylabel, type_of_bar=type_of_bar)
+        create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, ylabel, series_name, type_of_bar=type_of_bar)
 
     def test_create_barchart_not_enough_colours(self):
         """Check create_barchart fails if there aren't enough colours for the data"""
@@ -425,12 +445,13 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 223
         ylabel = "Number (000s)"
+        series_name = ('2012/12', '2016/17')
         show = False
         type_of_bar = 's'
         # act
         # assert
         self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
-                          ylabel, show=show, type_of_bar=type_of_bar)
+                          ylabel, series_name, show=show, type_of_bar=type_of_bar)
 
     def test_create_barchart_3d_y_data(self):
         """Check create_barchart fails if ty_data has more than 2 dimensions"""
@@ -445,12 +466,13 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 223
         ylabel = "Number (000s)"
+        series_name = ('2012/12', '2016/17')
         show = False
         type_of_bar = 'h'
         # act
         # assert
         self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
-                          ylabel, show=show, type_of_bar=type_of_bar)
+                          ylabel, series_name, show=show, type_of_bar=type_of_bar)
 
     def test_create_barchart_ylabel_not_str(self):
         """Check create_barchart throws a TypeError if ylabel is not a string"""
@@ -465,12 +487,13 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = 3
+        series_name = ('2012/12', '2016/17')
         show = True
         type_of_bar = 's'
         # act
         # assert
         self.assertRaises(TypeError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
-                          ylabel, show, type_of_bar)
+                          ylabel, series_name, show, type_of_bar)
 
     def test_create_barchart_ylabel_blank_str(self):
         """Check create_barchart throws a ValueError if ylabel is a blank string"""
@@ -485,12 +508,13 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "   "
+        series_name = ('2012/12', '2016/17')
         show = True
         type_of_bar = 's'
         # act
         # assert
         self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
-                          ylabel, show, type_of_bar)
+                          ylabel, series_name, show, type_of_bar)
 
     def test_create_barchart_ylabel_empty_str(self):
         """Check create_barchart throws a ValueError if ylabel is an empty string"""
@@ -505,12 +529,99 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = ""
+        series_name = ('2012/12', '2016/17')
         show = True
         type_of_bar = 's'
         # act
         # assert
         self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
-                          ylabel, show, type_of_bar)
+                          ylabel, series_name, show, type_of_bar)
+
+    def test_create_barchart_series_name_not_tuple(self):
+        """Check create_barchart throws a TypeError if series_name is not a tuple"""
+        print("@test_create_barchart_series_name_not_tuple")
+        # arrange
+        x_data = numpy.ones(3, dtype=numpy.float64)
+        y_data = numpy.ones(3, dtype=numpy.float64)
+        width = 1/1.5
+        colour = ["green"]
+        xlabel = "Years"
+        title = "Bar chart"
+        fig_id = 1
+        sub_id = 111
+        ylabel = "Number (000s)"
+        series_name = '2012/12'
+        show = True
+        type_of_bar = 's'
+        # act
+        # assert
+        self.assertRaises(TypeError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
+                          ylabel, series_name, show, type_of_bar)
+
+    def test_create_barchart_series_name_not_tuple_of_str(self):
+        """Check create_barchart throws a TypeError if series_name is not a tuple pf strings"""
+        print("@test_create_barchart_series_name_not_tuple_of_str")
+        # arrange
+        x_data = numpy.ones(3, dtype=numpy.float64)
+        y_data = numpy.ones(3, dtype=numpy.float64)
+        width = 1/1.5
+        colour = ["green"]
+        xlabel = "Years"
+        title = "Bar chart"
+        fig_id = 1
+        sub_id = 111
+        ylabel = "Number (000s)"
+        series_name = ('2012/12', 2)
+        show = True
+        type_of_bar = 's'
+        # act
+        # assert
+        self.assertRaises(TypeError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
+                          ylabel, series_name, show, type_of_bar)
+
+    def test_create_barchart_series_name_blank_str(self):
+        """Check create_barchart throws a ValueError if series_name is not a list pf strings"""
+        print("@test_create_barchart_series_name_blank_str")
+        # arrange
+        x_data = numpy.ones(3, dtype=numpy.float64)
+        y_data = numpy.ones(3, dtype=numpy.float64)
+        width = 1/1.5
+        colour = ["green"]
+        xlabel = "Years"
+        title = "Bar chart"
+        fig_id = 1
+        sub_id = 111
+        ylabel = "Number (000s)"
+        series_name = ('2012/12', "  ")
+        show = True
+        type_of_bar = 's'
+        # act
+        # assert
+        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
+                          ylabel, series_name, show, type_of_bar)
+
+    def test_create_barchart_series_name_empty_str(self):
+        """Check create_barchart throws a ValueError if series_name is not a list pf strings"""
+        print("@test_create_barchart_series_name_blank_str")
+        # arrange
+        x_data = numpy.ones(3, dtype=numpy.float64)
+        y_data = numpy.ones(3, dtype=numpy.float64)
+        width = 1/1.5
+        colour = ["green"]
+        xlabel = "Years"
+        title = "Bar chart"
+        fig_id = 1
+        sub_id = 111
+        ylabel = "Number (000s)"
+        series_name = ('2012/12', "")
+        show = True
+        type_of_bar = 's'
+        # act
+        # assert
+        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
+                          ylabel, series_name, show, type_of_bar)
+
+# TODO check coverage
 
 
 # run tests
