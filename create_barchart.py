@@ -59,8 +59,8 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
         raise TypeError("@create_barchart: ylabel {} is not a string".format(ylabel))
     if not (ylabel and ylabel.strip()):
         raise ValueError("@create_barchart: ylabel is blank or empty")
-    if not isinstance(series_name, tuple):
-        raise TypeError("@create_barchart: series_name {} is not a tuple".format(series_name))
+    if not isinstance(series_name, list):
+        raise TypeError("@create_barchart: series_name {} is not a list".format(series_name))
     for name in series_name:
         if not isinstance(name, str):
             raise TypeError("@create_barchart: series_name element {} is not a string".format(name))
@@ -76,7 +76,6 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
     c = sub_id%10
     num_subplots = a * b
     # TODO is there scope to refactor?
-    # TODO replace all hard-coded values with parameters (and default values?)
     # only plot the sub-plot if sub_id is valid
     if 1 <= c <= num_subplots:
         # create bar chart
@@ -100,7 +99,9 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
                 plt.xticks(x_index + ((num_rows / 2) * width), x_data, rotation='vertical')
                 plt.margins(0.2)                    # pad margins, so markers don't get clipped by the axes
                 plt.subplots_adjust(bottom=0.15)    # tweak spacing to prevent clipping of tick labels
-                #ax.set_xticklabels(x_data)
+                # ax.set_xticklabels(x_data)
+                if num_rows != len(series_name):
+                    raise ValueError("@create_barchart: the number of series names doesn't match the number of series {} <> {}".format(num_rows, len(series_name)))
                 # create legend
                 leg_colour = []
                 for i in range(num_rows):

@@ -25,7 +25,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
-        series_name = ('2012/12', '2016/17')
+        series_name = ['2012/12', '2016/17']
         show = True
         type_of_bar = 's'
         # act
@@ -46,7 +46,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
-        series_name = ('2012/12', '2016/17')
+        series_name = ['2012/12', '2016/17']
         show = True
         type_of_bar = 's'
         # act
@@ -67,7 +67,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
-        series_name = ('2012/12', '2016/17')
+        series_name = ['2012/12', '2016/17']
         show = True
         type_of_bar = 's'
         # act
@@ -88,7 +88,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
-        series_name = ('2012/12', '2016/17')
+        series_name = ['2012/12', '2016/17']
         show = True
         type_of_bar = 's'
         # act
@@ -109,7 +109,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
-        series_name = ('2012/12', '2016/17')
+        series_name = ['2012/12', '2016/17']
         show = True
         type_of_bar = 's'
         # act
@@ -130,7 +130,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
-        series_name = ('2012/12', '2016/17')
+        series_name = ['2012/12', '2016/17']
         show = True
         type_of_bar = 's'
         # act
@@ -151,7 +151,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
-        series_name = ('2012/12', '2016/17')
+        series_name = ['2012/12', '2016/17']
         show = True
         type_of_bar = 's'
         # act
@@ -172,7 +172,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
-        series_name = ('2012/12', '2016/17')
+        series_name = ['2012/12', '2016/17']
         show = True
         type_of_bar = 's'
         # act
@@ -193,7 +193,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
-        series_name = ('2012/12', '2016/17')
+        series_name = ['2012/12', '2016/17']
         show = True
         type_of_bar = 's'
         # act
@@ -214,7 +214,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
-        series_name = ('2012/12', '2016/17')
+        series_name = ['2012/12', '2016/17']
         show = True
         type_of_bar = 's'
         # act
@@ -235,7 +235,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
-        series_name = ('2012/12', '2016/17')
+        series_name = ['2012/12', '2016/17']
         show = True
         type_of_bar = 's'
         # act
@@ -256,7 +256,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
-        series_name = ('2012/12', '2016/17')
+        series_name = ['2012/12', '2016/17']
         show = True
         type_of_bar = 's'
         # act
@@ -277,7 +277,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
-        series_name = ('2012/12', '2016/17')
+        series_name = ['2012/12', '2016/17']
         show = True
         type_of_bar = 's'
         # act
@@ -298,7 +298,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
-        series_name = ('2012/12', '2016/17')
+        series_name = ['2012/12', '2016/17']
         show = True
         type_of_bar = 's'
         # act
@@ -319,7 +319,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = "x"
         sub_id = 111
         ylabel = "Number (000s)"
-        series_name = ('2012/12', '2016/17')
+        series_name = ['2012/12', '2016/17']
         show = True
         type_of_bar = 's'
         # act
@@ -340,7 +340,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 0
         sub_id = 111
         ylabel = "Number (000s)"
-        series_name = ('2012/12', '2016/17')
+        series_name = ['2012/12', '2016/17']
         show = True
         type_of_bar = 's'
         # act
@@ -361,7 +361,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = "111"
         ylabel = "Number (000s)"
-        series_name = ('2012/12', '2016/17')
+        series_name = ['2012/12', '2016/17']
         show = True
         type_of_bar = 's'
         # act
@@ -382,7 +382,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
-        series_name = ('2012/12', '2016/17')
+        series_name = ['2012/12', '2016/17']
         show = 3
         type_of_bar = 's'
         # act
@@ -403,7 +403,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 227
         ylabel = "Number (000s)"
-        series_name = ('2012/12', '2016/17')
+        series_name = ['2012/12', '2016/17']
         show = False
         type_of_bar = 's'
         # act
@@ -424,7 +424,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 223
         ylabel = "Number (000s)"
-        series_name = ('2012/12', '2016/17')
+        series_name = ['2012/12', '2016/17']
         show = False
         #type_of_bar = 's'
         # act
@@ -445,7 +445,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 223
         ylabel = "Number (000s)"
-        series_name = ('2012/12', '2016/17')
+        series_name = ['2012/12', '2016/17']
         show = False
         type_of_bar = 3
         # act
@@ -467,7 +467,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 223
         ylabel = "Number (000s)"
-        series_name = ('2012/12', '2016/17')
+        series_name = ['2012/12', '2016/17']
         show = False
         type_of_bar = "x"
         # act
@@ -489,7 +489,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 223
         ylabel = "Number (000s)"
-        series_name = ('2012/12', '2016/17')
+        series_name = ['2012/12', '2016/17']
         #show = False
         type_of_bar = 's'
         # act
@@ -510,7 +510,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 223
         ylabel = "Number (000s)"
-        series_name = ('2012/12', '2016/17')
+        series_name = ['2012/12', '2016/17']
         show = False
         type_of_bar = 's'
         # act
@@ -531,7 +531,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 223
         ylabel = "Number (000s)"
-        series_name = ('2012/12', '2016/17')
+        series_name = ['2012/12', '2016/17']
         show = False
         type_of_bar = 'h'
         # act
@@ -552,7 +552,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = 3
-        series_name = ('2012/12', '2016/17')
+        series_name = ['2012/12', '2016/17']
         show = True
         type_of_bar = 's'
         # act
@@ -573,7 +573,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "   "
-        series_name = ('2012/12', '2016/17')
+        series_name = ['2012/12', '2016/17']
         show = True
         type_of_bar = 's'
         # act
@@ -594,7 +594,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = ""
-        series_name = ('2012/12', '2016/17')
+        series_name = ['2012/12', '2016/17']
         show = True
         type_of_bar = 's'
         # act
@@ -602,9 +602,9 @@ class testCreateBarchart(unittest.TestCase):
         self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
                           ylabel, series_name, show, type_of_bar)
 
-    def test_create_barchart_series_name_not_tuple(self):
-        """Check create_barchart throws a TypeError if series_name is not a tuple"""
-        print("@test_create_barchart_series_name_not_tuple")
+    def test_create_barchart_series_name_not_list(self):
+        """Check create_barchart throws a TypeError if series_name is not a list"""
+        print("@test_create_barchart_series_name_not_list")
         # arrange
         x_data = numpy.ones(3, dtype=numpy.float64)
         y_data = numpy.ones(3, dtype=numpy.float64)
@@ -636,7 +636,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
-        series_name = ('2012/12', 2)
+        series_name = ['2012/12', 2]
         show = True
         type_of_bar = 's'
         # act
@@ -657,7 +657,7 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
-        series_name = ('2012/12', "  ")
+        series_name = ['2012/12', "  "]
         show = True
         type_of_bar = 's'
         # act
@@ -666,7 +666,7 @@ class testCreateBarchart(unittest.TestCase):
                           ylabel, series_name, show, type_of_bar)
 
     def test_create_barchart_series_name_empty_str(self):
-        """Check create_barchart throws a ValueError if series_name is not a list pf strings"""
+        """Check create_barchart throws a ValueError if series_name is not a list of strings"""
         print("@test_create_barchart_series_name_blank_str")
         # arrange
         x_data = numpy.ones(3, dtype=numpy.float64)
@@ -678,7 +678,49 @@ class testCreateBarchart(unittest.TestCase):
         fig_id = 1
         sub_id = 111
         ylabel = "Number (000s)"
-        series_name = ('2012/12', "")
+        series_name = ['2012/12', ""]
+        show = True
+        type_of_bar = 's'
+        # act
+        # assert
+        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
+                          ylabel, series_name, show, type_of_bar)
+
+    def test_create_barchart_fewer_series_name(self):
+        """Check create_barchart throws a ValueError if fewer series names than series"""
+        print("@test_create_barchart_fewer_series_name")
+        # arrange
+        x_data = numpy.ones(3, dtype=numpy.float64)
+        y_data = numpy.ones((2, 3), dtype=numpy.float64)
+        width = 1/1.5
+        colour = ["red", "green"]
+        xlabel = "Years"
+        title = "Bar chart"
+        fig_id = 1
+        sub_id = 111
+        ylabel = "Number (000s)"
+        series_name = ['2012/12']
+        show = True
+        type_of_bar = 's'
+        # act
+        # assert
+        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
+                          ylabel, series_name, show, type_of_bar)
+
+    def test_create_barchart_more_series_name(self):
+        """Check create_barchart throws a ValueError if more series names than series"""
+        print("@test_create_barchart_more_series_name")
+        # arrange
+        x_data = numpy.ones(3, dtype=numpy.float64)
+        y_data = numpy.ones((2, 3), dtype=numpy.float64)
+        width = 1/1.5
+        colour = ["red", "green"]
+        xlabel = "Years"
+        title = "Bar chart"
+        fig_id = 1
+        sub_id = 111
+        ylabel = "Number (000s)"
+        series_name = ['a', 'b', 'c']
         show = True
         type_of_bar = 's'
         # act
@@ -687,6 +729,7 @@ class testCreateBarchart(unittest.TestCase):
                           ylabel, series_name, show, type_of_bar)
 
 
+# TODO ensure unit tests cover all branches in code
 # run tests
 if __name__ == '__main__':
     unittest.main(verbosity=2)
