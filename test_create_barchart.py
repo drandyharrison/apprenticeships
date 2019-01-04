@@ -97,13 +97,34 @@ class testCreateBarchart(unittest.TestCase):
                           ylabel, series_name, show, type_of_bar)
 
     def test_create_barchart_colour_not_list(self):
-        """Check create_barchart throws a TypeError if colour is not a string"""
-        print("@test_create_barchart_colour_not_str")
+        """Check create_barchart throws a TypeError if colour is not a list"""
+        print("@test_create_barchart_colour_not_list")
         # arrange
         x_data = numpy.ones(3, dtype=numpy.float64)
         y_data = numpy.ones(3, dtype=numpy.float64)
         width = 1/1.5
         colour = 'red'
+        xlabel = "Years"
+        title = "Bar chart"
+        fig_id = 1
+        sub_id = 111
+        ylabel = "Number (000s)"
+        series_name = ('2012/12', '2016/17')
+        show = True
+        type_of_bar = 's'
+        # act
+        # assert
+        self.assertRaises(TypeError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
+                          ylabel, series_name, show, type_of_bar)
+
+    def test_create_barchart_colour_not_str(self):
+        """Check create_barchart throws a TypeError if colour contains a non-string"""
+        print("@test_create_barchart_colour_not_str")
+        # arrange
+        x_data = numpy.ones(3, dtype=numpy.float64)
+        y_data = numpy.ones(3, dtype=numpy.float64)
+        width = 1/1.5
+        colour = ["red", 3]
         xlabel = "Years"
         title = "Bar chart"
         fig_id = 1
@@ -411,6 +432,50 @@ class testCreateBarchart(unittest.TestCase):
         # confirm no exceptions (or warnings?) are raised
         create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, ylabel, series_name, show)
 
+    def test_create_barchart_default_type_of_bar_not_str(self):
+        """Check create_barchart throws a TypeError if type_of_bar is not a string"""
+        print("@test_create_barchart_default_type_of_bar_not_str")
+        # arrange
+        x_data = numpy.ones(3, dtype=numpy.float64)
+        y_data = numpy.ones(3, dtype=numpy.float64)
+        width = 1 / 1.5
+        colour = ["green"]
+        xlabel = "Years"
+        title = "Bar chart"
+        fig_id = 1
+        sub_id = 223
+        ylabel = "Number (000s)"
+        series_name = ('2012/12', '2016/17')
+        show = False
+        type_of_bar = 3
+        # act
+        # assert
+        # confirm no exceptions (or warnings?) are raised
+        self.assertRaises(TypeError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
+                          ylabel, series_name, show=show, type_of_bar=type_of_bar)
+
+    def test_create_barchart_default_unknown_type_of_bar(self):
+        """Check create_barchart throws a ValueError if type_of_bar is not known"""
+        print("@test_create_barchart_default_unknown_type_of_bar")
+        # arrange
+        x_data = numpy.ones(3, dtype=numpy.float64)
+        y_data = numpy.ones(3, dtype=numpy.float64)
+        width = 1 / 1.5
+        colour = ["green"]
+        xlabel = "Years"
+        title = "Bar chart"
+        fig_id = 1
+        sub_id = 223
+        ylabel = "Number (000s)"
+        series_name = ('2012/12', '2016/17')
+        show = False
+        type_of_bar = "x"
+        # act
+        # assert
+        # confirm no exceptions (or warnings?) are raised
+        self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
+                          ylabel, series_name, show=show, type_of_bar=type_of_bar)
+
     def test_create_barchart_default_show(self):
         """Check create_barchart runs ok using default value for show"""
         print("@test_create_barchart_default_show")
@@ -454,7 +519,7 @@ class testCreateBarchart(unittest.TestCase):
                           ylabel, series_name, show=show, type_of_bar=type_of_bar)
 
     def test_create_barchart_3d_y_data(self):
-        """Check create_barchart fails if ty_data has more than 2 dimensions"""
+        """Check create_barchart fails if y_data has more than 2 dimensions"""
         print("@test_create_barchart_3d_y_data")
         # arrange
         x_data = numpy.ones(3, dtype=numpy.float64)
@@ -620,8 +685,6 @@ class testCreateBarchart(unittest.TestCase):
         # assert
         self.assertRaises(ValueError, create_barchart, x_data, y_data, width, colour, xlabel, title, fig_id, sub_id,
                           ylabel, series_name, show, type_of_bar)
-
-# TODO check coverage
 
 
 # run tests
