@@ -2,7 +2,7 @@ import numpy
 import matplotlib.pyplot as plt
 import warnings
 
-def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, show=True, type_of_bar='s'):
+def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id, ylabel, show=True, type_of_bar='s'):
     """Create a bar chart
     x_data      - the x coordinates of the bars (the categories, don't have to be numeric)
     y_data      - the height of the bars
@@ -12,6 +12,7 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
     title       - title for the bar chart
     fig_id      - figure id
     sub_id      - subplot id
+    ylabel      - label for the y-axis
     show        - boolean flag to indicate whether to show figure
     type_of_bar - type of bar chart: 'b' - basic, 'h' - horizontal"""
     # validate parameters
@@ -41,19 +42,23 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
     if not isinstance(xlabel, str):
         raise TypeError("@create_barchart: x_label={} is not a string".format(xlabel))
     if not (xlabel and xlabel.strip()):
-        raise ValueError("@create_barchart xlabel is blank or empty")
+        raise ValueError("@create_barchart: xlabel is blank or empty")
     if not isinstance(title, str):
         raise TypeError("@create_barchart: title={} is not a string".format(title))
     if not isinstance(fig_id, int):
-        raise TypeError("@create_barchart figure id {} is not an integer".format(fig_id))
+        raise TypeError("@create_barchart: figure id {} is not an integer".format(fig_id))
     if fig_id <= 0:
-        raise ValueError("@create_barchart figure id {} is not positive".format(fig_id))
+        raise ValueError("@create_barchart: figure id {} is not positive".format(fig_id))
     if not isinstance(sub_id, int):
-        raise TypeError("@create_barchart subplot id {} is not an integer".format(sub_id))
+        raise TypeError("@create_barchart: subplot id {} is not an integer".format(sub_id))
+    if not isinstance(ylabel, str):
+        raise TypeError("@create_barchart: ylabel {} is not a string".format(ylabel))
+    if not (ylabel and ylabel.strip()):
+        raise ValueError("@create_barchart: ylabel is blank or empty")
     if not isinstance(show, bool):
-        raise TypeError("@create_barchart show {} is not a boolean".format(show))
+        raise TypeError("@create_barchart: show {} is not a boolean".format(show))
     if not isinstance(type_of_bar, str):
-        raise TypeError("@create_barchart type_of_bar {} is not a string".format(type_of_bar))
+        raise TypeError("@create_barchart: type_of_bar {} is not a string".format(type_of_bar))
     # check sub-plot id is valid (assumes 3 digit integer)
     a = int(sub_id/100)
     b = int(sub_id/10)%10
@@ -71,7 +76,7 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
                 plt.subplot(sub_id)  # if subplot not consistent with figure, new sub-plots added
                 plt.bar(x_data, y_data, width, color=colour[0])
                 plt.xlabel(xlabel)
-                plt.ylabel("Number (000s)")
+                plt.ylabel(ylabel)
             else:
                 ax = fig.add_subplot(sub_id)
                 num_rows = numpy.size(y_data, 0)
@@ -91,12 +96,13 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
                 for i in range(num_rows):
                     leg_colour.append(rects[i][0])
                 # TODO confirm legend colours and series names have the same length
+                # TODO confirm legend works with 1 and 3 data series as well
                 ax = fig.gca()
                 ax.legend(leg_colour, leg_series)
                 # TODO plot values at the end of each bar (controlled by a flag) -
                 #  see https://stackoverflow.com/questions/14270391/python-matplotlib-multiple-bars
                 plt.xlabel(xlabel)
-                plt.ylabel("Number (000s)")
+                plt.ylabel(ylabel)
         elif type_of_bar == 'h':
             if y_data.ndim == 1:
                 plt.subplot(sub_id)  # if subplot not consistent with figure, new sub-plots added
@@ -110,10 +116,12 @@ def create_barchart(x_data, y_data, width, colour, xlabel, title, fig_id, sub_id
                     ax.barh(x_index + (row_idx * width), y_data[row_idx, :], width, color=colour[row_idx], align='center')
                 ax.set_yticks(x_index + ((num_rows/2) * width))
                 ax.set_yticklabels(x_data)
+                # TODO add padding etc. to the horizontal bar chart as well
+                # TODO legend working for horizontal bar chart as well
                 # TODO plot values at the end of each bar (controlled by a flag) -
                 #  see https://stackoverflow.com/questions/14270391/python-matplotlib-multiple-bars
                 plt.ylabel(xlabel)
-                plt.xlabel("Number (000s)")
+                plt.xlabel(ylabel)
         else:
             raise ValueError("@create_barchart unknown type_of_bar {}".format(type_of_bar))
         # only give sub-plot a title if title is a non-empty string
