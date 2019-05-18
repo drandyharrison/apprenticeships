@@ -5,9 +5,9 @@
 import numpy
 import pandas
 import matplotlib.pyplot as plt
-from XLSXhandler import XLSXhandler
-from create_barchart import create_barchart
-from replace_nonnumeric import replace_nonnumeric
+import XLSXhandler
+import create_barchart
+import replace_nonnumeric
 
 jsondf = pandas.read_json("data_url.json")
 
@@ -17,7 +17,7 @@ for url in jsondf.values:
         raise ValueError("url wrong size: {}".format(url))
     url_str = url.item(0)
     print("Processing: {}".format(url_str), flush=True)
-    xlsx = XLSXhandler(url_str)
+    xlsx = XLSXhandler.XLSXhandler(url_str)
     if xlsx.get_xlsx_from_url():
         sht_names = xlsx.get_sheet_names()  # get the sheet names
         print("\tSheet names: {}".format(sht_names), flush=True)
@@ -46,13 +46,13 @@ for url in jsondf.values:
         y_data_1213 = xlsx.data[:, 0]
         y_data_1617 = xlsx.data[:, 4]
         # remove non-numeric values before populating the numpy array of floats
-        replace_nonnumeric(y_data_1213)
-        replace_nonnumeric(y_data_1617)
+        replace_nonnumeric.replace_nonnumeric(y_data_1213)
+        replace_nonnumeric.replace_nonnumeric(y_data_1617)
         y_data[0, :] = y_data_1213
         y_data[1, :] = y_data_1617
-        create_barchart(x_data, y_data/1000, width, ['red', 'blue'], 'Sectors', "", fig_id, 221, "Number (000s)",
+        create_barchart.create_barchart(x_data, y_data/1000, width, ['red', 'blue'], 'Sectors', "", fig_id, 221, "Number (000s)",
                         ['2012/12', '2016/17'], True, 's')
-        # create_barchart(x_data, y_data/1000, width, ['red', 'blue'], 'Sectors', "", fig_id, 221, True, 'h')
+        # create_barchart.create_barchart(x_data, y_data/1000, width, ['red', 'blue'], 'Sectors', "", fig_id, 221, True, 'h')
         # TODO (2) Fewest people are beginning apprenticeships in the north east
         # TODO (3) Women choose social work, men choose construction
         # TODO (4) Large employers make up the majority of starts
