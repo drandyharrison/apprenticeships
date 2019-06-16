@@ -18,3 +18,5 @@ htmlcov/
 \.coverage
 
 \.ipynb_checkpoints/
+
+pre_commit\.log
